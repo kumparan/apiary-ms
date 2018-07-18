@@ -3181,6 +3181,80 @@ Any complex data type MUST be encoded in JSON.
                 }
             ]
         }
+        
+## User Follow User [/users/get{?key,page,limit,ids,level,sort}]
+
+### List [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+    + ids - string
+    + level - string
+    + sort - string
+    + key - string
+    
++ Request
+
+    + Header
+    
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "page": 1,
+            "limit": 10,
+            "total": 1,
+            "results": [
+                {
+                    "_id": "v1_users/27431110790730840",
+                    "_rev": "_XGIzTOO---",
+                    "_key": "27431110790730840",
+                    "UUID": "",
+                    "name": "Doni Rubiagatra",
+                    "username": "doni-rubiagatra1524906876062",
+                    "email": "",
+                    "phone": "",
+                    "profilePicture": "https://alibaba.kumpar.com/kumpar/image/gplus/w_300,h_300,c_fill,g_face/102815728790535019611.jpg",
+                    "coverPicture": "https://alibaba.kumpar.com/kumpar/image/gplus/w_300,h_300,c_fill,g_face/102815728790535019611.jpg",
+                    "provider": null,
+                    "interest": null,
+                    "level": 0,
+                    "status": "",
+                    "datatype": "",
+                    "flag": {
+                        "isVerified": false,
+                        "isFollowed": false,
+                        "isFollowedPublisher": false
+                    },
+                    "aboutme": "",
+                    "groups": null,
+                    "gender": "male",
+                    "birthday": "",
+                    "location": null,
+                    "date": null,
+                    "user": {
+                        "create": "",
+                        "deleted": "",
+                        "update": "27431110790730840"
+                    },
+                    "verification": {
+                        "email": false,
+                        "phone": false
+                    },
+                    "userFlags": null,
+                    "loginby": "",
+                    "isSelf": false,
+                    "secemail": "",
+                    "Website": "",
+                    "role": "",
+                    "total": null,
+                    "group": ""
+                }
+            ]
+        }
 
 ## User Collection Magnetic [/users/new]
 
