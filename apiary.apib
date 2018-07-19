@@ -3269,6 +3269,70 @@ Any complex data type MUST be encoded in JSON.
     + Body
         
             {
+            "name":  "Apa deh",
+            "email": "123APA123@asdasd.com"
+            }
+            
++ Response 200 (application/json)
+    
+        {
+            "_id": "v1_users/1531994892637808613",
+            "_rev": "_XJGA2cW---",
+            "_key": "1531994892637808613",
+            "UUID": "",
+            "name": "Apa deh",
+            "username": "apa-deh",
+            "email": "123APA123@asdasd.com",
+            "phone": "",
+            "profilePicture": "",
+            "coverPicture": "",
+            "provider": null,
+            "interest": null,
+            "level": 0,
+            "status": "",
+            "datatype": "",
+            "flag": {
+                "isVerified": false,
+                "isFollowed": false,
+                "isFollowedPublisher": false
+            },
+            "aboutme": "",
+            "groups": null,
+            "gender": "",
+            "birthday": "",
+            "location": null,
+            "date": null,
+            "user": null,
+            "verification": null,
+            "userFlags": null,
+            "loginby": "",
+            "isSelf": false,
+            "secemail": "",
+            "Website": "",
+            "role": "",
+            "total": {
+                "story": 0,
+                "follower": 0,
+                "following": 0,
+                "topic": 0,
+                "comments": 0
+            },
+            "group": ""
+        }
+
+## User Collection [/users/]
+
+### Creat [POST]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+            
+    + Body
+        
+            {
               "name": "bambang",
               "email": "bambang.prayitno@kumparan.com",
               "flag": {
@@ -3293,6 +3357,42 @@ Any complex data type MUST be encoded in JSON.
             "aboutme": "bukan bambang",
             "level": 19
         }
+        
+        
+## User Facebook ID [/users/friends/facebook]
+
+### LIST [POST]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+            
+    + Body
+        
+            {
+            "users":["1766495196715966"]
+            }
+            
++ Response 200 (application/json)
+    
+        [
+            {
+                "_key": "27431110790515974",
+                "flag": {
+                    "isVerified": false,
+                    "isFollowed": false,
+                    "isFollowedPublisher": false
+                },
+                "name": "Muhammad Mawardi",
+                "profilePicture": "https://res.cloudinary.com/kumpar/image/facebook/w_300,h_300,c_fill,g_face/1766495196715966.jpg",
+                "provider": {
+                    "id": "1766495196715966",
+                    "name": "facebook"
+                }
+            }
+        ]
 
 
 ## User Accesstoken [/users/accesstoken]
