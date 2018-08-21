@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://apibeta.kumparan.com/v3.0/
+HOST: https://apibeta.kumparan.com/v3.0/
 
 # kumkum
 
@@ -34,672 +34,105 @@ This is a RESTful API allowing webclient communicate with backend.
 ## JSON
 Any complex data type MUST be encoded in JSON.  
 
-# Group Content
+# Group Auth
 
-## Page Arrangement Collection [/contents/page_arrangements{?page,limit}]
-
-### List [GET]
+## Auth Token Collection [/auth/token{?provider,access_token}]
+### Token [GET]
 
 + Parameter
-    + page - integer
-    + limit - integer
-    
-+ Request
+    + provider - string
+    + access_token - string
 
-    + Header
-    
-            Authorization: Bearer ABC123
 
 + Response 200 (application/json)
-
-        {
-            "page": 1,
-            "limit": 10,
-            "total": 2,
-            "results": [
-                {
-                    "id": 2,
-                    "name": "test2",
-                    "description": "anything you like 2",
-                    "active": true,
-                    "type": "msite",
-                    "page_id": 1,
-                    "sections": [
-                        {
-                            "id": 1,
-                            "name": "",
-                            "slug": "slug",
-                            "components": [
-                                {
-                                    "id": 1,
-                                    "name": "",
-                                    "slug": "slug",
-                                    "sequence": 1
-                                },
-                                {
-                                    "id": 2,
-                                    "name": "",
-                                    "slug": "slug",
-                                    "sequence": 2
-                                },
-                                {
-                                    "id": 3,
-                                    "name": "",
-                                    "slug": "slug",
-                                    "sequence": 3
-                                }
-                            ]
-                        },
-                        {
-                            "id": 2,
-                            "name": "",
-                            "slug": "slug",
-                            "components": [
-                                {
-                                    "id": 4,
-                                    "name": "",
-                                    "slug": "slug",
-                                    "sequence": 1
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "id": 4,
-                    "name": "test3",
-                    "description": "anything you like 2",
-                    "active": false,
-                    "page_id": 1,
-                    "sections": [
-                        {
-                            "id": 1,
-                            "name": "",
-                            "components": [
-                                {
-                                    "id": 1,
-                                    "name": "",
-                                    "sequence": 1
-                                },
-                                {
-                                    "id": 2,
-                                    "name": "",
-                                    "sequence": 2
-                                },
-                                {
-                                    "id": 3,
-                                    "name": "",
-                                    "sequence": 3
-                                }
-                            ]
-                        },
-                        {
-                            "id": 2,
-                            "name": "",
-                            "slug": "slug",
-                            "components": [
-                                {
-                                    "id": 4,
-                                    "name": "",
-                                    "slug": "slug",
-                                    "sequence": 1
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-
-### Create [POST]
-
-+ Request (application/json)
-
-    + Header
-        
-            Authorization: Bearer ABC123
-                
-    + Body
     
-            {
-                "name": "test2",
-                "description": "anything you like 2",
-                "page_id": 1,
-                "sections": [
-                    {
-                        "id": 1,
-                        "components": [ 
-                            {
-                                "id": 1,
-                                "sequence": 1
-                            },
-                            {
-                                "id": 2,
-                                "sequence": 2
-                            }, 
-                            {
-                                "id": 3,
-                                "sequence": 3
-                            }
-                        ]
-                    },
-                    {
-                        "id": 2,
-                        "components": [
-                            {
-                                "id": 4,
-                                "sequence": 1
-                            }
-                        ]
-                    }
-                ]
-            }
-
-+ Response 201 (application/json)
-
         {
-            "id": 7,
-            "name": "test2",
-            "description": "anything you like 2",
-            "active": false,
-            "type": "msite",
-            "page_id": 1,
-            "sections": [
-                {
-                    "id": 1,
-                    "name": "",
-                    "slug": "slug",
-                    "components": [
-                        {
-                            "id": 1,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 1
-                        },
-                        {
-                            "id": 2,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 2
-                        },
-                        {
-                            "id": 3,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 3
-                        }
-                    ]
-                },
-                {
-                    "id": 2,
-                    "name": "",
-                    "slug": "slug",
-                    "components": [
-                        {
-                            "id": 4,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 1
-                        }
-                    ]
-                }
-            ]
+            "status": 200,
+            "error": {
+                "code": 0,
+                "message": ""
+            },
+            "results": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVVUlEIjoiIiwiX2lkIjoidjFfdXNlcnMvMTUzMzkxMzM4NzU5MzE0OTYxMiIsIl9rZXkiOiIxNTMzOTEzMzg3NTkzMTQ5NjEyIiwiX3JldiI6Il9YUU5wQldtLS0tIiwiY292ZXJQaWN0dXJlIjoiIiwiZW1haWwiOiJtaEBzZXB0aWFkaS5jb20iLCJpbnRlcmVzdCI6IiIsIm5hbWUiOiJNdWhhbW1hZCBIYXNhbiBTZXB0aWFkaSIsInBob25lIjoiIiwicHJvZmlsZVBpY3R1cmUiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9rdW1wYXIvaW1hZ2UvZmFjZWJvb2svd18zMDAsaF8zMDAsY19maWxsLGdfZmFjZS8xMDIxMjQ3NTc4OTUwNDk0OC5qcGciLCJwcm92aWRlciI6IiIsInVzZXJuYW1lIjoibXVoYW1tYWQtaGFzYW4tc2VwdGlhZGkifQ.Tu4ajKzXNI0x44cIMzaRDN1TZopg58uAPitUbIIVmKc",
+                "isNew": false
+            },
+            "isNew": false,
+            "cookie": "token=eyJ0b2tlbiI6ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpWVlVsRUlqb2lJaXdpWDJsa0lqb2lkakZmZFhObGNuTXZNVFV6TXpreE16TTROelU1TXpFME9UWXhNaUlzSWw5clpYa2lPaUl4TlRNek9URXpNemczTlRrek1UUTVOakV5SWl3aVgzSmxkaUk2SWw5WVVVNXdRbGR0TFMwdElpd2lZMjkyWlhKUWFXTjBkWEpsSWpvaUlpd2laVzFoYVd3aU9pSnRhRUJ6WlhCMGFXRmthUzVqYjIwaUxDSnBiblJsY21WemRDSTZJaUlzSW01aGJXVWlPaUpOZFdoaGJXMWhaQ0JJWVhOaGJpQlRaWEIwYVdGa2FTSXNJbkJvYjI1bElqb2lJaXdpY0hKdlptbHNaVkJwWTNSMWNtVWlPaUpvZEhSd2N6b3ZMM0psY3k1amJHOTFaR2x1WVhKNUxtTnZiUzlyZFcxd1lYSXZhVzFoWjJVdlptRmpaV0p2YjJzdmQxOHpNREFzYUY4ek1EQXNZMTltYVd4c0xHZGZabUZqWlM4eE1ESXhNalEzTlRjNE9UVXdORGswT0M1cWNHY2lMQ0p3Y205MmFXUmxjaUk2SWlJc0luVnpaWEp1WVcxbElqb2liWFZvWVcxdFlXUXRhR0Z6WVc0dGMyVndkR2xoWkdraWZRLlR1NGFqS3pYTkkweDQ0Y0lNemFSRE4xVFpvcGc1OHVBUGl0VWJJSVZtS2MifQ==; domain=localhost; expires=Sat, 09 Feb 2019 20:51:37 WIB; path=/; Secure; HttpOnly"
         }
 
-## Page Arrangement Object [/contents/page_arrangements/{id}]
-
-### Show [GET]
-
+## Auth Info Collection [/auth/info]
+### Info [GET]
 + Request
 
     + Header
         
-            Authorization: Bearer ABC123
-
-+ Response 200 (application/json)
-
-        {
-            "id": 2,
-            "name": "test2",
-            "description": "anything you like 2",
-            "active": true,
-            "type": "msite",
-            "page_id": 1,
-            "sections": [
-                {
-                    "id": 2,
-                    "name": "",
-                    "slug": "slug",
-                    "components": [
-                        {
-                            "id": 4,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 1
-                        }
-                    ]
-                },
-                {
-                    "id": 1,
-                    "name": "",
-                    "slug": "slug",
-                    "components": [
-                        {
-                            "id": 1,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 1
-                        },
-                        {
-                            "id": 2,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 2
-                        },
-                        {
-                            "id": 3,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 3
-                        }
-                    ]
-                }
-            ]
-        }
-
-### Delete [DELETE]
-
-+ Request
-
-    + Header
-        
-            Authorization: Bearer ABC123
-
-+ Response 200 (string)
-
-        Deleted successfully
-        
-### Put [PUT]
-
-+ Request (application/json)
-
-    + Header
-        
-            Authorization: Bearer ABC123
-        
-    + Body
-    
-            {
-                "name": "test2",
-                "description": "anything you like 2",
-                "page_id": 1,
-                "sections": [
-                    {
-                        "id": 1,
-                        "components": [ 
-                            {
-                                "id": 1,
-                                "sequence": 1
-                            },
-                            {
-                                "id": 2,
-                                "sequence": 2
-                            }, 
-                            {
-                                "id": 3,
-                                "sequence": 3
-                            }
-                        ]
-                    },
-                    {
-                        "id": 2,
-                        "components": [
-                            {
-                                "id": 4,
-                                "sequence": 1
-                            }
-                        ]
-                    }
-                ]
-            }
-
-+ Response 201 (application/json)
-
-        {
-            "id": 7,
-            "name": "test2",
-            "description": "anything you like 2",
-            "active": false,
-            "type": "msite",
-            "page_id": 1,
-            "sections": [
-                {
-                    "id": 1,
-                    "name": "",
-                    "slug": "slug",
-                    "components": [
-                        {
-                            "id": 1,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 1
-                        },
-                        {
-                            "id": 2,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 2
-                        },
-                        {
-                            "id": 3,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 3
-                        }
-                    ]
-                },
-                {
-                    "id": 2,
-                    "name": "",
-                    "slug": "slug",
-                    "components": [
-                        {
-                            "id": 4,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 1
-                        }
-                    ]
-                }
-            ]
-        }
-
-## Activate Page Arrangement [/contents/page_arrangements/{id}/activate]
-
-### Activate [PATCH]
-
-+ Request
-
-    + Header
-        
-            Authorization: Bearer ABC123
+            Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVVUlEIjpudWxsLCJhYm91dG1lIjpudWxsLCJiaXJ0aGRheSI6IjE5OTgtMDMtMTAiLCJkYXRhdHlwZSI6InVzZXIiLCJkYXRlIjp7ImNyZWF0ZSI6IjIwMTgtMDMtMjVUMTc6MDU6MDkuNDI2WiJ9LCJlbWFpbCI6Ijc5Mzk4NzczNDEyNDQyN0BmYWNlYm9vay5jb20iLCJmbGFnIjp7ImlzVmVyaWZpZWQiOmZhbHNlfSwiZ2VuZGVyIjoibWFsZSIsImdyb3VwcyI6bnVsbCwibGV2ZWwiOjAsIm5hbWUiOiJEb25pIFN5YWhydWwgQXphbiIsInByb2ZpbGVQaWN0dXJlIjoiaHR0cHM6Ly9yZXMuY2xvdWRpbmFyeS5jb20va3VtcGFyL2ltYWdlL2ZhY2Vib29rL3dfMzAwLGhfMzAwLGNfZmlsbCxnX2ZhY2UvNzkzOTg3NzM0MTI0NDI3LmpwZyIsInByb3ZpZGVyIjp7ImlkIjoiNzkzOTg3NzM0MTI0NDI3IiwibmFtZSI6ImZhY2Vib29rIn0sInN0YXR1cyI6ImFjdGl2ZSIsInVzZXIiOnsiY3JlYXRlIjpudWxsLCJkZWxldGVkIjpudWxsLCJ1cGRhdGUiOm51bGx9LCJ1c2VybmFtZSI6ImRvbmktc3lhaHJ1bC1hemFuIiwidmVyaWZpY2F0aW9uIjp7ImVtYWlsIjpmYWxzZSwicGhvbmUiOmZhbHNlfSwiX2lkIjoidjFfdXNlcnMvMjc0MzExMTA3OTA2MDg0OTIiLCJfa2V5IjoiMjc0MzExMTA3OTA2MDg0OTIiLCJpc05ldyI6dHJ1ZSwidWlkIjoiMjc0MzExMTA3OTA2MDg0OTIiLCJleHAiOjE2MDc3OTEwMzN9.wLY44sofhHYxXrnRBepbJeJssAPxZpy4rCv_mjbst_8
             
 + Response 200 (application/json)
 
         {
-            "id": 2,
-            "name": "test2",
-            "description": "anything you like 2",
-            "active": true,
-            "type": "msite",
-            "page_id": 1,
-            "sections": [
-                {
-                    "id": 1,
-                    "name": "",
-                    "slug": "slug",
-                    "components": [
-                        {
-                            "id": 1,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 1
-                        },
-                        {
-                            "id": 2,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 2
-                        },
-                        {
-                            "id": 3,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 3
-                        }
-                    ]
+            "status": 200,
+            "error": {
+                "code": 0,
+                "message": null
+            },
+            "results": {
+                "UUID": null,
+                "aboutme": null,
+                "birthday": "1998-03-10",
+                "datatype": "user",
+                "date": {
+                    "create": "2018-03-25T17:05:09.426Z"
                 },
-                {
-                    "id": 2,
-                    "name": "",
-                    "slug": "slug",
-                    "components": [
-                        {
-                            "id": 4,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 1
-                        }
-                    ]
-                }
-            ]
+                "email": "793987734124427@facebook.com",
+                "flag": {
+                    "isVerified": false
+                },
+                "gender": "male",
+                "groups": null,
+                "level": 0,
+                "name": "Doni Syahrul Azan",
+                "profilePicture": "https://res.cloudinary.com/kumpar/image/facebook/w_300,h_300,c_fill,g_face/793987734124427.jpg",
+                "provider": {
+                    "id": "793987734124427",
+                    "name": "facebook"
+                },
+                "status": "active",
+                "user": {
+                    "create": null,
+                    "deleted": null,
+                    "update": null
+                },
+                "username": "doni-syahrul-azan",
+                "verification": {
+                    "email": false,
+                    "phone": false
+                },
+                "_id": "v1_users/27431110790608492",
+                "_key": "27431110790608492",
+                "isNew": true,
+                "uid": "27431110790608492",
+                "exp": 1607791033
+            }
         }
         
-## Active Page Section Arrangement [/contents/pages/{page_slug}/sections/{section_slug}/arrangements/active{?type}]
+## Auth Logout Collection [/auth/logout]
+### Logout [GET]
 
-### Get Active Page Arrangement by Section [GET]
-
-+ Parameter
-    + type - string
++ Response 200 (application/json)
     
-+ Request
-
-    + Header
-        
-            Authorization: Bearer ABC123
-
-+ Response 200 (application/json)
-
         {
-            "id": 2,
-            "name": "timeline",
-            "slug": "slug",
-            "components": [
-                {
-                    "id": 4,
-                    "name": "",
-                    "slug": "slug",
-                    "sequence": 1
-                }
-            ]
+            "status": 200,
+            "error": {
+                "code": 0,
+                "message": ""
+            },
+            "results": null,
+            "isNew": false,
+            "cookie": "token=; domain=localhost; expires=Thu, 01 Jan 1970 07:00:00 WIB; path=/; Secure; HttpOnly"
         }
         
-## Active Page Arrangement [/contents/pages/{page_slug}/arrangements/active{?type}]
-
-### Get Active Page Arrangement by Page [GET]
-
-+ Parameter
-    + type - string
-    
-+ Request
-
-    + Header
         
-            Authorization: Bearer ABC123
-
-+ Response 200 (application/json)
-
-        {
-            "id": 2,
-            "name": "test2",
-            "description": "anything you like 2",
-            "active": true,
-            "type": "msite",
-            "page_id": 1,
-            "sections": [
-                {
-                    "id": 2,
-                    "name": "",
-                    "slug": "slug",
-                    "components": [
-                        {
-                            "id": 4,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 1
-                        }
-                    ]
-                },
-                {
-                    "id": 1,
-                    "name": "",
-                    "slug": "slug",
-                    "components": [
-                        {
-                            "id": 1,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 1
-                        },
-                        {
-                            "id": 2,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 2
-                        },
-                        {
-                            "id": 3,
-                            "name": "",
-                            "slug": "slug",
-                            "sequence": 3
-                        }
-                    ]
-                }
-            ]
-        }
-
-## Pages Collection [/contents/pages{?page,limit}]
-
-### List [GET]
-
-+ Parameter
-    + page - integer
-    + limit - integer
-
-+ Request
-
-    + Header
-        
-            Authorization: Bearer ABC123
-
-+ Response 200 (application/json)
-
-        {
-            "results": [
-                {
-                    "id": 1,
-                    "name": "newsfeed",
-                    "slug": "slug",
-                    "description": ""
-                },
-                {
-                    "id": 2,
-                    "name": "story",
-                    "slug": "slug",
-                    "description": ""
-                }
-            ],
-            "page": 1,
-            "limit": 10,
-            "total": 2
-        }
-
-## Page Sections Collection [/contents/page_sections{?page,limit}]
-
-### List [GET]
-
-+ Parameter
-    + page - integer
-    + limit - integer
-    
-+ Request
-
-    + Header
-        
-            Authorization: Bearer ABC123
-
-+ Response 200 (application/json)
-
-        {
-            "results": [
-                {
-                    "id": 1,
-                    "name": "leftbar",
-                    "slug": "slug",
-                    "description": ""
-                },
-                {
-                    "id": 2,
-                    "name": "timeline",
-                    "slug": "slug",
-                    "description": ""
-                },
-                {
-                    "id": 3,
-                    "name": "rightbar",
-                    "slug": "slug",
-                    "description": ""
-                },
-                {
-                    "id": 4,
-                    "name": "section1",
-                    "slug": "slug",
-                    "description": ""
-                }
-            ],
-            "page": 1,
-            "limit": 10,
-            "total": 4
-        }
-        
-## Page Components Collection [/contents/page_components{?page,limit}]
-
-### List [GET]
-
-+ Parameter
-    + page - integer
-    + limit - integer
-    
-+ Request
-
-    + Header
-        
-            Authorization: Bearer ABC123
-
-+ Response 200 (application/json)
-
-        {
-            "results": [
-                {
-                    "id": 1,
-                    "name": "trending",
-                    "slug": "slug",
-                    "description": ""
-                },
-                {
-                    "id": 2,
-                    "name": "ads",
-                    "slug": "slug",
-                    "description": ""
-                },
-                {
-                    "id": 3,
-                    "name": "story",
-                    "slug": "slug",
-                    "description": ""
-                },
-                {
-                    "id": 4,
-                    "name": "popular",
-                    "slug": "slug",
-                    "description": ""
-                }
-            ],
-            "page": 1,
-            "limit": 10,
-            "total": 4
-        }
-
 # Group Reaction
 
 ## Reaction Collection [/reaction{?objectid,type,page,limit}]
@@ -711,7 +144,7 @@ Any complex data type MUST be encoded in JSON.
     + type - string
     + page - integer
     + limit - integer
-    
+
 + Request
 
     + Header
@@ -4331,7 +3764,7 @@ Any complex data type MUST be encoded in JSON.
     + location - string
     + mediaid - string
     
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
         {
             "code": 200,
@@ -5313,3 +4746,1484 @@ Get stories of topics.
                 }
               ]
             }
+            
+# Group Media
+
+## Media Collection [/medias{?limit,page,type,sort,search,ids,all}]
+
+### List [GET]
+
++ Parameters
+    + limit - integer
+    + page - integer 
+    + type - string 
+    + sort - string
+    + search - string
+    + ids - integer
+    
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "page": 1,
+            "limit": 1,
+            "total": 127009,
+            "results": [
+                {
+                    "_id": "v1_medias/1262302157",
+                    "_key": "1262302157",
+                    "_rev": "_WZzx6S6---",
+                    "title": "asdf",
+                    "description": "asdf",
+                    "public_id": "yxxoqzx83b9z9y4h96xy",
+                    "version": "",
+                    "type": "image",
+                    "url": "https://gimg.kumpar.com/kumpar/image/upload/v1519301691/yxxoqzx83b9z9y4h96xy.jpg",
+                    "filename": "",
+                    "bytes": 1371,
+                    "dimensions": {
+                        "width": 24,
+                        "height": 24
+                    },
+                    "uploader": {
+                        "id": "53631452",
+                        "name": "Aditya Prasetio"
+                    },
+                    "photographer": "asdf",
+                    "duration": 0,
+                    "thumbnail": "",
+                    "permission": 0,
+                    "location": {
+                        "name": "DKI Jakarta",
+                        "lat": -6.2293867,
+                        "lng": 106.6894284
+                    },
+                    "status": "publish",
+                    "tagging": null,
+                    "updatedContent": null,
+                    "topics": [
+                        {
+                            "_key": "1245565246",
+                            "author": {
+                                "id": "1164818781",
+                                "name": "Asaduddin Fatihulhaqq",
+                                "username": "asaduddin-fatihulhaqq1504673197282"
+                            },
+                            "date": {
+                                "create": "2018-02-05T09:09:06.627Z",
+                                "deleted": "",
+                                "update": "",
+                                "viewEnable": ""
+                            },
+                            "description": "bola itu bundar",
+                            "flag": {
+                                "isPromoted": false,
+                                "isViewEnable": false,
+                                "special": false,
+                                "isFollowed": false
+                            },
+                            "name": "Bola bundar",
+                            "slug": "bola-bundar",
+                            "status": "publish",
+                            "type": "public",
+                            "url": "https://gimg.kumpar.com/kumpar/image/upload/f_auto,h_220,w_361/v1515487858/mchmdpgntf1mcofyrqr3.jpg",
+                            "user": {
+                                "create": "1164818781",
+                                "deleted": "",
+                                "update": ""
+                            },
+                            "statistic": null,
+                            "position": false,
+                            "_id": "v1_topic/1245565246",
+                            "_rev": "_WUS31aS---"
+                        }
+                    ],
+                    "source": "kumparan",
+                    "date": {
+                        "create": "2018-02-22T12:19:07.726Z",
+                        "event": "2018-02-21T17:00:00.000Z",
+                        "delete": ""
+                    },
+                    "user": {
+                        "create": "53631452",
+                        "update": "",
+                        "delete": ""
+                    }
+                }
+            ]
+        }
+
+### Create [POST]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
+    + Body 
+    
+            {
+                "bytes":461246,
+                "description":"Test.",
+                "dimensions":{
+                    "height":2000,
+                    "width":3000
+                },
+                "location":{
+                    "lat":-6.2293867,
+                    "lng":106.6894284,
+                    "name":"DKI Jakarta"
+                },
+                "mimetype":"image/jpg",
+                "permission":0,
+                "photographer":"KBRI Moskow.",
+                "public_id":"mbyndevq9iuwyyvymkwk",
+                "source":"Others",
+                "status":"publish",
+                "tagging":[
+            
+                ],
+                "title":"Test",
+                "topics":[
+            
+                ],
+                "type":"image",
+                "updatedContent":[
+            
+                ],
+                "uploader":{
+                    "id":"34548407",
+                    "name":"Sattwika Duhita"
+                },
+                "url":"https://res.cloudinary.com/kumpar/image/upload/v1493224252/mbyndevq9iuwyyvymkwk.jpg"
+            }
+
++ Response 201 (application/json)
+
+        {
+            "_id": "v1_medias/1533793488210519770",
+            "_key": "1533793488210519770",
+            "_rev": "_XPy1RVK---",
+            "title": "Test",
+            "description": "Test.",
+            "public_id": "mbyndevq9iuwyyvymkwk",
+            "version": "",
+            "type": "image",
+            "url": "https://res.cloudinary.com/kumpar/image/upload/v1493224252/mbyndevq9iuwyyvymkwk.jpg",
+            "filename": "",
+            "bytes": 461246,
+            "dimensions": {
+                "width": 3000,
+                "height": 2000
+            },
+            "uploader": {
+                "id": "1044025931",
+                "name": "Mumung Moh Iqbal"
+            },
+            "photographer": "KBRI Moskow.",
+            "duration": 0,
+            "thumbnail": "",
+            "permission": 0,
+            "location": {
+                "name": "DKI Jakarta",
+                "lat": -6.2293867,
+                "lng": 106.6894284
+            },
+            "status": "publish",
+            "tagging": null,
+            "updatedContent": null,
+            "topics": null,
+            "source": "Others",
+            "date": {
+                "create": "2018-08-09T05:44:48Z",
+                "event": "",
+                "update": ""
+            },
+            "user": {
+                "create": "1044025931",
+                "update": "",
+                "delete": ""
+            },
+            "mimetype": "image/jpg"
+        }
+        
+## Media Object [/medias/{key}]
+
+### Show [GET]
+
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+    
++ Response 200 (application/json)
+        
+        {
+            "_id": "v1_medias/1533793488210519770",
+            "_key": "1533793488210519770",
+            "_rev": "_XPy1RVK---",
+            "title": "Test",
+            "description": "Test.",
+            "public_id": "mbyndevq9iuwyyvymkwk",
+            "version": "",
+            "type": "image",
+            "url": "https://res.cloudinary.com/kumpar/image/upload/v1493224252/mbyndevq9iuwyyvymkwk.jpg",
+            "filename": "",
+            "bytes": 461246,
+            "dimensions": {
+                "width": 3000,
+                "height": 2000
+            },
+            "uploader": {
+                "id": "1044025931",
+                "name": "Mumung Moh Iqbal"
+            },
+            "photographer": "KBRI Moskow.",
+            "duration": 0,
+            "thumbnail": "",
+            "permission": 0,
+            "location": {
+                "name": "DKI Jakarta",
+                "lat": -6.2293867,
+                "lng": 106.6894284
+            },
+            "status": "publish",
+            "tagging": null,
+            "updatedContent": null,
+            "topics": null,
+            "source": "Others",
+            "date": {
+                "create": "2018-08-09T05:44:48Z",
+                "event": "",
+                "update": ""
+            },
+            "user": {
+                "create": "1044025931",
+                "update": "",
+                "delete": ""
+            },
+            "mimetype": "image/jpg"
+        }
+        
+
+### Patch [PATCH]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+        
+    + Body
+    
+            {
+                "bytes":461246,
+                "description":"TEST PATCH",
+                "dimensions":{
+                    "height":2000,
+                    "width":3000
+                },
+                "location":{
+                    "lat":-6.2293867,
+                    "lng":106.6894284,
+                    "name":"DKI Jakarta"
+                },
+                "mimetype":"image/jpg",
+                "permission":0,
+                "photographer":"KBRI Moskow.",
+                "public_id":"mbyndevq9iuwyyvymkwk",
+                "source":"Others",
+                "status":"publish",
+                "tagging":[
+            
+                ],
+                "title":"TEST PATCH",
+                "topics":[
+            
+                ],
+                "type":"image",
+                "updatedContent":[
+            
+                ],
+                "uploader":{
+                    "id":"34548407",
+                    "name":"Sattwika Duhita"
+                },
+                "url":"https://res.cloudinary.com/kumpar/image/upload/v1493224252/mbyndevq9iuwyyvymkwk.jpg"
+            }
+    
++ Response 200 (application/json)
+
+            {
+                "_id": "v1_medias/1533793488210519770",
+                "_key": "1533793488210519770",
+                "_rev": "_XPy4qqa---",
+                "title": "TEST PATCH",
+                "description": "TEST PATCH",
+                "public_id": "mbyndevq9iuwyyvymkwk",
+                "version": "",
+                "type": "image",
+                "url": "https://res.cloudinary.com/kumpar/image/upload/v1493224252/mbyndevq9iuwyyvymkwk.jpg",
+                "filename": "",
+                "bytes": 461246,
+                "dimensions": {
+                    "width": 3000,
+                    "height": 2000
+                },
+                "uploader": {
+                    "id": "34548407",
+                    "name": "Sattwika Duhita"
+                },
+                "photographer": "KBRI Moskow.",
+                "duration": 0,
+                "thumbnail": "",
+                "permission": 0,
+                "location": {
+                    "name": "DKI Jakarta",
+                    "lat": -6.2293867,
+                    "lng": 106.6894284
+                },
+                "status": "publish",
+                "tagging": null,
+                "updatedContent": null,
+                "topics": null,
+                "source": "Others",
+                "date": {
+                    "create": "2018-08-09T05:44:48Z",
+                    "event": "",
+                    "update": ""
+                },
+                "user": {
+                    "create": "1044025931",
+                    "update": "1044025931",
+                    "delete": ""
+                },
+                "mimetype": "image/jpg"
+            }
+            
+### DELETE [DELETE]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+        
+    
++ Response 200 (application/json)
+
+            {
+                "_id": "v1_medias/1533793488210519770",
+                "_key": "1533793488210519770",
+                "_rev": "_XPzPRme---",
+                "title": "TEST PATCH",
+                "description": "TEST PATCH",
+                "public_id": "mbyndevq9iuwyyvymkwk",
+                "version": "",
+                "type": "image",
+                "url": "https://res.cloudinary.com/kumpar/image/upload/v1493224252/mbyndevq9iuwyyvymkwk.jpg",
+                "filename": "",
+                "bytes": 461246,
+                "dimensions": {
+                    "width": 3000,
+                    "height": 2000
+                },
+                "uploader": {
+                    "id": "34548407",
+                    "name": "Sattwika Duhita"
+                },
+                "photographer": "KBRI Moskow.",
+                "duration": 0,
+                "thumbnail": "",
+                "permission": 0,
+                "location": {
+                    "name": "DKI Jakarta",
+                    "lat": -6.2293867,
+                    "lng": 106.6894284
+                },
+                "status": "deleted",
+                "tagging": null,
+                "updatedContent": null,
+                "topics": null,
+                "source": "Others",
+                "date": {
+                    "create": "2018-08-09T05:44:48Z",
+                    "event": "",
+                    "update": "2018-08-09T06:13:12Z"
+                },
+                "user": {
+                    "create": "1044025931",
+                    "update": "1044025931",
+                    "delete": "1044025931"
+                },
+                "mimetype": "image/jpg"
+            }
+
+### Update Content [POST]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
+    + Body 
+    
+            {
+                  "url": "test.kumparan.com"
+            }
+
+        
++ Response 200 (application/json)
+
+        {
+            "_id": "v1_medias/1533796051812468235",
+            "_key": "1533796051812468235",
+            "_rev": "_XPzch_----",
+            "title": "Test",
+            "description": "Test.",
+            "public_id": "mbyndevq9iuwyyvymkwk",
+            "version": "",
+            "type": "image",
+            "url": "https://res.cloudinary.com/kumpar/image/upload/v1493224252/mbyndevq9iuwyyvymkwk.jpg",
+            "filename": "",
+            "bytes": 461246,
+            "dimensions": {
+                "width": 3000,
+                "height": 2000
+            },
+            "uploader": {
+                "id": "1044025931",
+                "name": "Mumung Moh Iqbal"
+            },
+            "photographer": "KBRI Moskow.",
+            "duration": 0,
+            "thumbnail": "",
+            "permission": 0,
+            "location": {
+                "name": "DKI Jakarta",
+                "lat": -6.2293867,
+                "lng": 106.6894284
+            },
+            "status": "publish",
+            "tagging": null,
+            "updatedContent": [
+                {
+                    "updatedBy": {
+                        "id": "1044025931",
+                        "name": "Mumung Moh Iqbal"
+                    },
+                    "updateDate": "2018-08-09T06:27:40Z",
+                    "url": "test.kumparan.com"
+                }
+            ],
+            "topics": null,
+            "source": "Others",
+            "date": {
+                "create": "2018-08-09T06:27:31Z",
+                "event": "",
+                "update": ""
+            },
+            "user": {
+                "create": "1044025931",
+                "update": "",
+                "delete": ""
+            },
+            "mimetype": "image/jpg"
+        }
+
+## Media Search [/medias/search{?page,limit,sort}]
+
++ Parameters
+    + limit - integer
+    + page - integer 
+    + sort - string
+    
+    
+### Search by Keyword [POST]
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
+    + Body 
+    
+            {
+                "keyword":"display",
+                "type":"image"
+            }
+            
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "page": 1,
+            "limit": 1,
+            "total": 10,
+            "results": [
+                {
+                    "_id": "v1_medias/1533793456262916209",
+                    "_key": "1533793456262916209",
+                    "_rev": "_XPy0yI2---",
+                    "title": "Indonesia Permanent Product Display di Rusia",
+                    "description": "Sambutan di produk display Indonesia.",
+                    "public_id": "mbyndevq9iuwyyvymkwk",
+                    "version": "",
+                    "type": "image",
+                    "url": "https://res.cloudinary.com/kumpar/image/upload/v1493224252/mbyndevq9iuwyyvymkwk.jpg",
+                    "filename": "",
+                    "bytes": 461246,
+                    "dimensions": {
+                        "width": 3000,
+                        "height": 2000
+                    },
+                    "uploader": {
+                        "id": "1044025931",
+                        "name": "Mumung Moh Iqbal"
+                    },
+                    "photographer": "KBRI Moskow.",
+                    "duration": 0,
+                    "thumbnail": "",
+                    "permission": 0,
+                    "location": {
+                        "name": "DKI Jakarta",
+                        "lat": -6.2293867,
+                        "lng": 106.6894284
+                    },
+                    "status": "publish",
+                    "tagging": null,
+                    "updatedContent": null,
+                    "topics": null,
+                    "source": "Others",
+                    "date": {
+                        "create": "2018-08-09T05:44:16Z",
+                        "event": "",
+                        "update": ""
+                    },
+                    "user": {
+                        "create": "1044025931",
+                        "update": "",
+                        "delete": ""
+                    },
+                    "mimetype": "image/jpg"
+                }
+            ]
+        }
+        
+        
+        
+# Group Content
+
+## Page Arrangement Collection [/contents/page_arrangements{?page,limit}]
+
+### List [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+    
++ Request
+
+    + Header
+    
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+            "page": 1,
+            "limit": 10,
+            "total": 2,
+            "results": [
+                {
+                    "id": 2,
+                    "name": "test2",
+                    "description": "anything you like 2",
+                    "active": true,
+                    "type": "msite",
+                    "page_id": 1,
+                    "sections": [
+                        {
+                            "id": 1,
+                            "name": "",
+                            "slug": "slug",
+                            "components": [
+                                {
+                                    "id": 1,
+                                    "name": "",
+                                    "slug": "slug",
+                                    "sequence": 1
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "",
+                                    "slug": "slug",
+                                    "sequence": 2
+                                },
+                                {
+                                    "id": 3,
+                                    "name": "",
+                                    "slug": "slug",
+                                    "sequence": 3
+                                }
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "name": "",
+                            "slug": "slug",
+                            "components": [
+                                {
+                                    "id": 4,
+                                    "name": "",
+                                    "slug": "slug",
+                                    "sequence": 1
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": 4,
+                    "name": "test3",
+                    "description": "anything you like 2",
+                    "active": false,
+                    "page_id": 1,
+                    "sections": [
+                        {
+                            "id": 1,
+                            "name": "",
+                            "components": [
+                                {
+                                    "id": 1,
+                                    "name": "",
+                                    "sequence": 1
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "",
+                                    "sequence": 2
+                                },
+                                {
+                                    "id": 3,
+                                    "name": "",
+                                    "sequence": 3
+                                }
+                            ]
+                        },
+                        {
+                            "id": 2,
+                            "name": "",
+                            "slug": "slug",
+                            "components": [
+                                {
+                                    "id": 4,
+                                    "name": "",
+                                    "slug": "slug",
+                                    "sequence": 1
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+
+### Create [POST]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+                
+    + Body
+    
+            {
+                "name": "test2",
+                "description": "anything you like 2",
+                "page_id": 1,
+                "sections": [
+                    {
+                        "id": 1,
+                        "components": [ 
+                            {
+                                "id": 1,
+                                "sequence": 1
+                            },
+                            {
+                                "id": 2,
+                                "sequence": 2
+                            }, 
+                            {
+                                "id": 3,
+                                "sequence": 3
+                            }
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "components": [
+                            {
+                                "id": 4,
+                                "sequence": 1
+                            }
+                        ]
+                    }
+                ]
+            }
+
++ Response 201 (application/json)
+
+        {
+            "id": 7,
+            "name": "test2",
+            "description": "anything you like 2",
+            "active": false,
+            "type": "msite",
+            "page_id": 1,
+            "sections": [
+                {
+                    "id": 1,
+                    "name": "",
+                    "slug": "slug",
+                    "components": [
+                        {
+                            "id": 1,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 1
+                        },
+                        {
+                            "id": 2,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 2
+                        },
+                        {
+                            "id": 3,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 3
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "",
+                    "slug": "slug",
+                    "components": [
+                        {
+                            "id": 4,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 1
+                        }
+                    ]
+                }
+            ]
+        }
+
+## Page Arrangement Object [/contents/page_arrangements/{id}]
+
+### Show [GET]
+
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+            "id": 2,
+            "name": "test2",
+            "description": "anything you like 2",
+            "active": true,
+            "type": "msite",
+            "page_id": 1,
+            "sections": [
+                {
+                    "id": 2,
+                    "name": "",
+                    "slug": "slug",
+                    "components": [
+                        {
+                            "id": 4,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 1,
+                    "name": "",
+                    "slug": "slug",
+                    "components": [
+                        {
+                            "id": 1,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 1
+                        },
+                        {
+                            "id": 2,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 2
+                        },
+                        {
+                            "id": 3,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 3
+                        }
+                    ]
+                }
+            ]
+        }
+
+### Delete [DELETE]
+
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (string)
+
+        Deleted successfully
+        
+### Put [PUT]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+        
+    + Body
+    
+            {
+                "name": "test2",
+                "description": "anything you like 2",
+                "page_id": 1,
+                "sections": [
+                    {
+                        "id": 1,
+                        "components": [ 
+                            {
+                                "id": 1,
+                                "sequence": 1
+                            },
+                            {
+                                "id": 2,
+                                "sequence": 2
+                            }, 
+                            {
+                                "id": 3,
+                                "sequence": 3
+                            }
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "components": [
+                            {
+                                "id": 4,
+                                "sequence": 1
+                            }
+                        ]
+                    }
+                ]
+            }
+
++ Response 201 (application/json)
+
+        {
+            "id": 7,
+            "name": "test2",
+            "description": "anything you like 2",
+            "active": false,
+            "type": "msite",
+            "page_id": 1,
+            "sections": [
+                {
+                    "id": 1,
+                    "name": "",
+                    "slug": "slug",
+                    "components": [
+                        {
+                            "id": 1,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 1
+                        },
+                        {
+                            "id": 2,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 2
+                        },
+                        {
+                            "id": 3,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 3
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "",
+                    "slug": "slug",
+                    "components": [
+                        {
+                            "id": 4,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 1
+                        }
+                    ]
+                }
+            ]
+        }
+
+## Activate Page Arrangement [/contents/page_arrangements/{id}/activate]
+
+### Activate [PATCH]
+
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+            
++ Response 200 (application/json)
+
+        {
+            "id": 2,
+            "name": "test2",
+            "description": "anything you like 2",
+            "active": true,
+            "type": "msite",
+            "page_id": 1,
+            "sections": [
+                {
+                    "id": 1,
+                    "name": "",
+                    "slug": "slug",
+                    "components": [
+                        {
+                            "id": 1,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 1
+                        },
+                        {
+                            "id": 2,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 2
+                        },
+                        {
+                            "id": 3,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 3
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "name": "",
+                    "slug": "slug",
+                    "components": [
+                        {
+                            "id": 4,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 1
+                        }
+                    ]
+                }
+            ]
+        }
+        
+## Active Page Section Arrangement [/contents/pages/{page_slug}/sections/{section_slug}/arrangements/active{?type}]
+
+### Get Active Page Arrangement by Section [GET]
+
++ Parameter
+    + type - string
+    
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+            "id": 2,
+            "name": "timeline",
+            "slug": "slug",
+            "components": [
+                {
+                    "id": 4,
+                    "name": "",
+                    "slug": "slug",
+                    "sequence": 1
+                }
+            ]
+        }
+        
+## Active Page Arrangement [/contents/pages/{page_slug}/arrangements/active{?type}]
+
+### Get Active Page Arrangement by Page [GET]
+
++ Parameter
+    + type - string
+    
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+            "id": 2,
+            "name": "test2",
+            "description": "anything you like 2",
+            "active": true,
+            "type": "msite",
+            "page_id": 1,
+            "sections": [
+                {
+                    "id": 2,
+                    "name": "",
+                    "slug": "slug",
+                    "components": [
+                        {
+                            "id": 4,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 1
+                        }
+                    ]
+                },
+                {
+                    "id": 1,
+                    "name": "",
+                    "slug": "slug",
+                    "components": [
+                        {
+                            "id": 1,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 1
+                        },
+                        {
+                            "id": 2,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 2
+                        },
+                        {
+                            "id": 3,
+                            "name": "",
+                            "slug": "slug",
+                            "sequence": 3
+                        }
+                    ]
+                }
+            ]
+        }
+
+## Pages Collection [/contents/pages{?page,limit}]
+
+### List [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+            "results": [
+                {
+                    "id": 1,
+                    "name": "newsfeed",
+                    "slug": "slug",
+                    "description": ""
+                },
+                {
+                    "id": 2,
+                    "name": "story",
+                    "slug": "slug",
+                    "description": ""
+                }
+            ],
+            "page": 1,
+            "limit": 10,
+            "total": 2
+        }
+
+## Page Sections Collection [/contents/page_sections{?page,limit}]
+
+### List [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+    
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+            "results": [
+                {
+                    "id": 1,
+                    "name": "leftbar",
+                    "slug": "slug",
+                    "description": ""
+                },
+                {
+                    "id": 2,
+                    "name": "timeline",
+                    "slug": "slug",
+                    "description": ""
+                },
+                {
+                    "id": 3,
+                    "name": "rightbar",
+                    "slug": "slug",
+                    "description": ""
+                },
+                {
+                    "id": 4,
+                    "name": "section1",
+                    "slug": "slug",
+                    "description": ""
+                }
+            ],
+            "page": 1,
+            "limit": 10,
+            "total": 4
+        }
+        
+## Page Components Collection [/contents/page_components{?page,limit}]
+
+### List [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+    
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+            "results": [
+                {
+                    "id": 1,
+                    "name": "trending",
+                    "slug": "slug",
+                    "description": ""
+                },
+                {
+                    "id": 2,
+                    "name": "ads",
+                    "slug": "slug",
+                    "description": ""
+                },
+                {
+                    "id": 3,
+                    "name": "story",
+                    "slug": "slug",
+                    "description": ""
+                },
+                {
+                    "id": 4,
+                    "name": "popular",
+                    "slug": "slug",
+                    "description": ""
+                }
+            ],
+            "page": 1,
+            "limit": 10,
+            "total": 4
+        }
+        
+        
+# Group Follow
+
+## Follow users Collection [/follow/user/{key}{?page,limit}]
+
+### List [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+    
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+            "page": 1,
+            "limit": 10,
+            "total": 1,
+            "result": [
+                {
+                    "_id": "v1_users/1164806627",
+                    "_rev": "",
+                    "_key": "1164806627",
+                    "UUID": "",
+                    "name": "Ari Ulandari",
+                    "username": "ari-ulandari",
+                    "email": "",
+                    "phone": "",
+                    "profilePicture": "https://gimg.kumpar.com/kumpar/image/upload/w_300,h_300,c_scale,c_thumb/xrhxcyf84aaajhyymqtq.jpg",
+                    "coverPicture": "",
+                    "provider": null,
+                    "interest": null,
+                    "level": 0,
+                    "status": "",
+                    "datatype": "user",
+                    "flag": {
+                        "isVerified": false,
+                        "isFollowed": false,
+                        "isFollowedPublisher": false
+                    },
+                    "aboutme": "Kadang kita tidak sadar bahwa kalimat-kalimat sederhana  dapat sangat mempengaruhi hidup seseorang",
+                    "groups": null,
+                    "gender": "",
+                    "birthday": "",
+                    "location": null,
+                    "date": {
+                        "create": "2017-08-24T07:30:10.383Z",
+                        "update": "",
+                        "publish": ""
+                    },
+                    "user": null,
+                    "verification": null,
+                    "userFlags": null,
+                    "loginby": "",
+                    "isSelf": false,
+                    "secemail": "",
+                    "Website": "",
+                    "role": "",
+                    "total": null,
+                    "group": ""
+                }
+            ]
+        }
+        
+## Follow v2 Collection [/follow/v2]
+
+### Create [POST]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
+    + Body
+    
+                {
+                    "type": "topic",
+                    "order": ["46200537", "39328335"]
+                }
+
++ Response 200 (application/json)
+
+            {
+                "follow": {
+                    "_key": [
+                        "27431110790355723_39328335",
+                        "27431110790355723_46200537"
+                    ]
+                },
+                "unfollow": {
+                    "_key": [
+                        "27431110790355723_1014422993"
+                    ]
+                },
+                "order": [
+                    "39328335",
+                    "46200537"
+                ]
+            }
+
+## Follower topic Collection [/follower/topic/{key}{?page,limit}]
+
+### List [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+    
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "page": 1,
+            "limit": 10,
+            "total": 7419,
+            "result": [
+                {
+                    "_id": "v1_users/1147515972",
+                    "_rev": "_VB8bXQ6---",
+                    "_key": "1147515972",
+                    "UUID": "",
+                    "name": " Ugan",
+                    "username": "liem-oe-gan",
+                    "email": "liemoegan21@gmail.com",
+                    "phone": "",
+                    "profilePicture": "https://img.kumpar.com/kumpar/image/upload/w_300,h_300,c_scale,c_thumb/jrejkfzphfgu0kxk5ru8.jpg",
+                    "coverPicture": "",
+                    "provider": {
+                        "id": "105857504877326812857",
+                        "name": "google"
+                    },
+                    "interest": null,
+                    "level": 0,
+                    "status": "active",
+                    "datatype": "user",
+                    "flag": {
+                        "isVerified": false,
+                        "isFollowed": false,
+                        "isFollowedPublisher": false
+                    },
+                    "aboutme": "",
+                    "groups": null,
+                    "gender": "male",
+                    "birthday": "1996-01-01T00:00:00+00:00",
+                    "location": null,
+                    "date": {
+                        "create": "2017-05-25T12:10:39.592Z",
+                        "update": "",
+                        "publish": ""
+                    },
+                    "user": {
+                        "create": "",
+                        "deleted": "",
+                        "update": "1147515972"
+                    },
+                    "verification": null,
+                    "userFlags": null,
+                    "loginby": "",
+                    "isSelf": false,
+                    "secemail": "",
+                    "Website": "",
+                    "role": "",
+                    "total": null,
+                    "group": ""
+                }
+            ]
+        }
+        
+
+## Follower Collection [/follower/{key}{?page,limit}]
+
+### List [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+    
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+        "page": 1,
+        "limit": 10,
+        "total": 128,
+        "result": [
+                {
+                    "_id": "v1_users/27431110790787721",
+                    "_rev": "",
+                    "_key": "27431110790787721",
+                    "UUID": "",
+                    "name": "Marsel Shinichi Agustin",
+                    "username": "marsel-shinichi-agustin",
+                    "email": "",
+                    "phone": "",
+                    "profilePicture": "https://res.cloudinary.com/kumpar/image/facebook/w_300,h_300,c_fill,g_face/1878585982434837.jpg",
+                    "coverPicture": "",
+                    "provider": null,
+                    "interest": null,
+                    "level": 0,
+                    "status": "",
+                    "datatype": "user",
+                    "flag": {
+                        "isVerified": false,
+                        "isFollowed": false,
+                        "isFollowedPublisher": false
+                    },
+                    "aboutme": "",
+                    "groups": null,
+                    "gender": "",
+                    "birthday": "",
+                    "location": null,
+                    "date": {
+                        "create": "2018-05-27T22:34:32.399Z",
+                        "update": "",
+                        "publish": ""
+                    },
+                    "user": null,
+                    "verification": null,
+                    "userFlags": null,
+                    "loginby": "",
+                    "isSelf": false,
+                    "secemail": "",
+                    "Website": "",
+                    "role": "",
+                    "total": null,
+                    "group": ""
+                }
+             ]
+        }
