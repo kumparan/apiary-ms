@@ -678,6 +678,23 @@ Any complex data type MUST be encoded in JSON.
             },
             "position": true,
         }
+
+
+## Topic User Flags [/topic/{key}/user-flags]
+
+### Get user flags of a topic [GET]
+
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+            
++ Response 200 (application/json)
+
+        {
+            "isFollowed": true
+        }
         
 ## Topic Promoted Collection [/topic/promote{?page,limit,active}]
 
@@ -2688,10 +2705,85 @@ Any complex data type MUST be encoded in JSON.
                 }
             ]
         }
+        
+### Create [POST]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+            
+    + Body
+        
+            {
+              "name": "bambang",
+              "email": "bambang.prayitno@kumparan.com",
+              "flag": {
+                "isVerified": true
+              },
+              "profilePicture": "ini urinya",
+              "username": "bambang",
+              "aboutme": "bukan bambang"
+            }
+            
++ Response 200 (application/json)
+    
+        {
+            "_id": "v1_users/1427195692",
+            "_key": "1427195692",
+            "name": "bambangs",
+            "email": "bambang.prayitnos@kumparan.com",
+            "flag": {
+                "isVerified": true
+            },
+            "username": "bambangs",
+            "aboutme": "bukan bambang",
+            "level": 19
+        }
+        
+        
+
+## User Stats [/users/{key}/stats]
+
+### Get stats of a user [GET]
+
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+            
++ Response 200 (application/json)
+
+        {
+            "comments": 0,
+            "reaction": {
+                "like": 0
+            },
+            "share": 0,
+            "view": 0
+        }
+
+## User Flags [/users/{key}/user-flags]
+
+### Get user flags of a user [GET]
+
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+            
++ Response 200 (application/json)
+
+        {
+            "isFollowed": true
+        }
 
 ## User Collection Magnetic [/users/new]
 
-### CreateNew [POST]
+### Create New [POST]
 
 + Request (application/json)
 
@@ -2753,45 +2845,7 @@ Any complex data type MUST be encoded in JSON.
             "group": ""
         }
 
-## User Collection [/users/]
 
-### Creat [POST]
-
-+ Request (application/json)
-
-    + Header
-        
-            Authorization: Bearer ABC123
-            
-    + Body
-        
-            {
-              "name": "bambang",
-              "email": "bambang.prayitno@kumparan.com",
-              "flag": {
-                "isVerified": true
-              },
-              "profilePicture": "ini urinya",
-              "username": "bambang",
-              "aboutme": "bukan bambang"
-            }
-            
-+ Response 200 (application/json)
-    
-        {
-            "_id": "v1_users/1427195692",
-            "_key": "1427195692",
-            "name": "bambangs",
-            "email": "bambang.prayitnos@kumparan.com",
-            "flag": {
-                "isVerified": true
-            },
-            "username": "bambangs",
-            "aboutme": "bukan bambang",
-            "level": 19
-        }
-        
-        
 ## User Facebook ID [/users/friends/facebook]
 
 ### LIST [POST]
@@ -2828,9 +2882,9 @@ Any complex data type MUST be encoded in JSON.
         ]
 
 
-## User Accesstoken [/users/accesstoken]
+## User Access Token [/users/accesstoken]
 
-### Accesstoken [POST]
+### Access Token [POST]
 
 + Request (application/json)
 
@@ -3119,6 +3173,10 @@ Any complex data type MUST be encoded in JSON.
             }
         }
         
+
+
+
+
 # Group Stories
 
 ## Stories Collection [/stories{?page,limit,status,publisher,date,datetype,author,topic,search,withheadline,publishonly,datatype,type,task,feed,ids,sort,except,notpublisher}]
@@ -3621,7 +3679,102 @@ Any complex data type MUST be encoded in JSON.
             "tosort": "",
             "date_sort": ""
         }
+
+## Stories Object Stats [/stories/{key}/stats]
+
+### Get story stats [GET]
+
++ Request
+
+    + Header
         
+            Authorization: Bearer ABC123
+            
++ Response 200 (application/json)
+
+        {
+            "comments": 0,
+            "reaction": {
+                "like": 0
+            },
+            "share": 0,
+            "view": 0
+        }
+
+## Stories Object User Flags [/stories/{key}/flags]
+
+### Get story user flags [GET]
+
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+            "commented": false,
+            "liked": false,
+            "voted": false
+        }
+
+## Stories Object Polling [/stories/{key}/polling]
+
+### Get story polling [GET]
+
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+            
++ Response 200 (application/json)
+
+        {
+            "choices": {
+                "1": {
+                    "image": "xw8hsfrtivbbrrc9o9ed",
+                    "selected": false,
+                    "stats": 0,
+                    "text": "Sari"
+                },
+                "2": {
+                    "image": "onmkjidq8llfz4stk8ty",
+                    "selected": false,
+                    "stats": 0,
+                    "text": "Inem"
+                },
+                "3": {
+                    "image": "gjdjinipshmzxespnnqr",
+                    "selected": false,
+                    "stats": 0,
+                    "text": "munaroh"
+                },
+                "4": {
+                    "image": "igdbsmgm2jemcbnyjan3",
+                    "selected": false,
+                    "stats": 0,
+                    "text": "ati"
+                }
+            },
+            "date": {
+                "end": "2429-12-31T07:50:38.907Z",
+                "start": "2018-08-20T07:50:38.907Z"
+            },
+            "question": {
+                "cover": "db7cshvskgt4q11ipd7l",
+                "text": "Siapakah SPG yang paling cantik menurut kamu?"
+            },
+            "settings": {
+                "hideResult": false,
+                "isMultiple": false,
+                "otherManual": false
+            },
+            "stats": {
+                "total": 0
+            }
+        }
         
 ## Stories Headline [/stories/headline]
 
