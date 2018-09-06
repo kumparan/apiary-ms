@@ -34,6 +34,110 @@ This is a RESTful API allowing webclient communicate with backend.
 ## JSON
 Any complex data type MUST be encoded in JSON.  
 
+# Group Aggregators
+
+## Aggregator Collection [/aggregators/{?page,limit}]
+### Aggregator [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+
+
++ Response 200 (application/json)
+
+        {
+            "code": 200,
+            "limit": 10,
+            "page": 1,
+            "total": 7
+            "results": [
+                    {
+                        "_key": "1464160495",
+                        "date": {
+                            "create": "2018-07-19T07:03:22.520Z",
+                            "delete": "",
+                            "update": ""
+                        },
+                        "name": "caping",
+                        "slug": "caping",
+                        "status": "",
+                        "user": {
+                            "create": "27431110790355723",
+                            "delete": "",
+                            "update": ""
+                        }
+                    }
+                ]
+        }
+        
+### Create [POST]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
+    + Body 
+    
+                {
+                "name": "caping"
+                }
+
++ Response 200 (application/json)
+
+            {
+                "_key": "1464160495",
+                "date": {
+                    "create": "2018-07-19T07:03:22.520Z",
+                    "delete": "",
+                    "update": ""
+                },
+                "name": "caping",
+                "slug": "caping",
+                "status": "",
+                "user": {
+                    "create": "27431110790355723",
+                    "delete": "",
+                    "update": ""
+                }
+            }
+            
+### Patch [PATCH]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
+    + Body 
+    
+                {
+                "name": "caping2"
+                }
+
++ Response 200 (application/json)
+
+            {
+                "_key": "1464160495",
+                "date": {
+                    "create": "2018-07-19T07:03:22.520Z",
+                    "delete": "2018-07-19T07:03:22.520Z",
+                    "update": ""
+                },
+                "name": "caping2",
+                "slug": "caping",
+                "status": "",
+                "user": {
+                    "create": "27431110790355723",
+                    "delete": "27431110790355723",
+                    "update": ""
+                }
+            }
+                    
+                    
 # Group Auth
 
 ## Auth Token Collection [/auth/token{?provider,access_token}]
@@ -6379,4 +6483,1271 @@ Get stories of topics.
                     "group": ""
                 }
              ]
+        }
+
+# Group Profile
+
+## Profile [/profile/{username}{?page,limit,date,datetype,status}]
+
+### Profile [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+    + date - string
+    + datetype - string
+    + status - string
+    
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+          "code": 200,
+          "limit": 10,
+          "page": 1,
+          "results": [
+            {
+              "datatype": "share",
+              "date": {
+                "create": "2018-08-27T10:47:47Z",
+                "headline": "",
+                "publish": "2018-08-27T10:47:47Z",
+                "update": "",
+                "schedule": null
+              },
+              "author": {
+                "_id": "v1_users/27431110790791321",
+                "_rev": "_XSIuS02---",
+                "_key": "27431110790791321",
+                "UUID": "",
+                "name": "Agung Hariadi Tedja",
+                "username": "agung-hariadi-tedja1530852815756",
+                "email": "agung.tedja@kumparan.com",
+                "phone": "",
+                "profilePicture": "https://res.cloudinary.com/kumpar/image/gplus/w_300,h_300,c_fill,g_face/117259548641516947644.jpg",
+                "coverPicture": "",
+                "provider": {
+                  "id": "117259548641516947644",
+                  "name": "google"
+                },
+                "interest": [
+                  
+                ],
+                "level": 1,
+                "status": "active",
+                "datatype": "user",
+                "flag": {
+                  "isVerified": false,
+                  "isFollowed": false,
+                  "isFollowedPublisher": false
+                },
+                "aboutme": "",
+                "groups": [
+                  
+                ],
+                "gender": "male",
+                "birthday": "2018-06-26",
+                "location": null,
+                "date": {
+                  "create": "2018-07-06T04:53:35.259Z",
+                  "update": "2018-07-06T04:53:52.828Z",
+                  "publish": ""
+                },
+                "user": {
+                  "create": "",
+                  "deleted": "",
+                  "update": "27431110790791321"
+                },
+                "verification": {
+                  "email": false,
+                  "phone": false
+                },
+                "userFlags": null,
+                "loginby": "google",
+                "isSelf": false,
+                "secemail": "",
+                "Website": "",
+                "role": "",
+                "total": {
+                  "story": 30,
+                  "follower": 0,
+                  "following": 4,
+                  "topic": 3,
+                  "comments": 26
+                },
+                "group": ""
+              },
+              "shareCaption": "test",
+              "isSelf": false,
+              "object": {
+                "_id": "v1_stories/1532406966077726531",
+                "_key": "1532406966077726531",
+                "author": {
+                  "group": "",
+                  "id": "27431110790457422",
+                  "name": "Ferdian Robianto",
+                  "username": "ferdian-robianto",
+                  "profilePicture": "https://alibaba.kumpar.com/kumpar/image/gplus/w_300,h_300,c_fill,g_face/112239263056722264021.jpg",
+                  "_key": "27431110790457422",
+                  "flag": {
+                    "isVerified": false,
+                    "isFollowed": false,
+                    "isFollowedPublisher": false
+                  },
+                  "userFlags": {
+                    "publisher": false,
+                    "test": false
+                  },
+                  "publisher": {
+                    "name": "kumparanBISNIS",
+                    "title": "",
+                    "description": "Informasi dan analisis ekonomi-bisnis, dari korporasi hingga end user",
+                    "picture": "https://gimg.kumpar.com/kumpar/image/upload/v1512588409/rc7bmfkzmlnyaseicna5.png",
+                    "_key": "kumparan-bisnis",
+                    "slug": "kumparanbisnis",
+                    "cover": "https://gimg.kumpar.com/kumpar/image/upload/v1512589032/zluufynrciwortymbuih.jpg",
+                    "avatar": "https://gimg.kumpar.com/kumpar/image/upload/v1512588409/rc7bmfkzmlnyaseicna5.png"
+                  },
+                  "level": 0
+                },
+                "datatype": "story",
+                "date": {
+                  "create": "2018-07-24T06:31:00.681Z",
+                  "headline": "",
+                  "publish": "2018-07-24T06:31:29.221Z",
+                  "update": "2018-07-24T06:31:59.824Z"
+                },
+                "detail": {
+                  "draftjs_object": "{\"entityMap\":{\"0\":{\"type\":\"image\",\"mutability\":\"IMMUTABLE\",\"data\":{\"image\":{\"_key\":\"27431110790489836\",\"bytes\":533669,\"date\":{\"create\":\"2018-07-12T04:28:30.406Z\",\"event\":\"2018-07-11T17:00:00.000Z\"},\"description\":\"Peringatan Hari Anti Narkoba Internasional.\",\"dimensions\":{\"height\":720,\"width\":1280},\"location\":{\"lat\":-6.2293867,\"lng\":106.6894284,\"name\":\"DKI Jakarta\"},\"mimetype\":\"image/jpg\",\"permission\":0,\"photographer\":\"Dok. Kemendagri\",\"public_id\":\"tqxmiv7bi8jspxlobwb4\",\"source\":\"Others\",\"status\":\"publish\",\"tagging\":[],\"title\":\"Hari Anti Narkoba Internasional\",\"topics\":[],\"type\":\"image\",\"updatedContent\":[],\"uploader\":{\"id\":\"1164887353\",\"name\":\"Fitra Andrianto\"},\"url\":\"https://gimg.kumpar.com/kumpar/image/upload/v1531369369/tqxmiv7bi8jspxlobwb4.jpg\",\"user\":{\"create\":\"1164887353\",\"deleted\":null,\"update\":null}},\"alignment\":\"justify\",\"isCover\":true}}},\"blocks\":[{\"key\":\"80ijt\",\"text\":\"Test poll\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"4okeg\",\"text\":\" \",\"type\":\"atomic\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":0,\"length\":1,\"key\":0}],\"data\":{}},{\"key\":\"coifq\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+                  "type": "draftjs"
+                },
+                "editor": {
+                  "id": "v1_users/1420839525",
+                  "name": "adit prasetio",
+                  "username": "adit-prasetio",
+                  "profilePicture": "https://alibaba.kumpar.com/kumpar/image/gplus/w_300,h_300,c_fill,g_face/116827263750544344879.jpg",
+                  "flag": {
+                    "isVerified": false,
+                    "isFollowed": false
+                  },
+                  "level": 0
+                },
+                "editors": [
+                  
+                ],
+                "internal": true,
+                "is": {
+                  "adultContent": false
+                },
+                "labels": {
+                  "topics": [
+                    {
+                      "_key": "1530000583816928988",
+                      "_id": "v1_topic/1530000583816928988",
+                      "name": "Topic Testing Baru",
+                      "slug": "topic-testing-baru",
+                      "url": "",
+                      "special": false,
+                      "flag": {
+                        "isFollowed": false,
+                        "isViewEnable": false
+                      }
+                    }
+                  ]
+                },
+                "lead_media": {
+                  "cloudinary_ids": [
+                    "tqxmiv7bi8jspxlobwb4"
+                  ],
+                  "type": "image",
+                  "urls": [
+                    "https://gimg.kumpar.com/kumpar/image/upload/v1531369369/tqxmiv7bi8jspxlobwb4.jpg"
+                  ],
+                  "external_url": "",
+                  "draftjs_object": ""
+                },
+                "lead_text": {
+                  "content": "Test poll",
+                  "type": "raw"
+                },
+                "location": null,
+                "meta": null,
+                "media": [
+                  
+                ],
+                "position": {
+                  "headline": 0,
+                  "sticked": 0
+                },
+                "polling": {
+                  "choices": {
+                    "1": {
+                      "image": "zlizdp1zqquywpjqozai",
+                      "selected": false,
+                      "stats": 2,
+                      "text": "halo"
+                    },
+                    "2": {
+                      "image": "u5o4pd5ka7tgpphfba1z",
+                      "selected": false,
+                      "stats": 1,
+                      "text": "halo2"
+                    }
+                  },
+                  "date": {
+                    "end": "2018-07-26T06:27:52.548Z",
+                    "start": "2018-07-24T06:27:52.548Z"
+                  },
+                  "question": {
+                    "cover": "zlizdp1zqquywpjqozai",
+                    "text": "Test poll"
+                  },
+                  "settings": {
+                    "hideResult": false,
+                    "isMultiple": false,
+                    "otherManual": false
+                  },
+                  "stats": {
+                    "1": 2,
+                    "2": 1,
+                    "total": 3
+                  }
+                },
+                "reporter": {
+                  "id": "v1_users/27431110790722957",
+                  "name": "Arfiansyah Panji Purnandaru",
+                  "username": "arfiansyah-panji-purnandaru",
+                  "profilePicture": "https://res.cloudinary.com/kumpar/image/upload/v1524237395/1524237393118_s89nwp_jrk1in.jpg",
+                  "flag": {
+                    "isVerified": true,
+                    "isFollowed": false
+                  },
+                  "level": 8
+                },
+                "reporters": [
+                  {
+                    "id": "v1_users/27431110790722957",
+                    "name": "Arfiansyah Panji Purnandaru",
+                    "username": "arfiansyah-panji-purnandaru",
+                    "profilePicture": "https://res.cloudinary.com/kumpar/image/upload/v1524237395/1524237393118_s89nwp_jrk1in.jpg",
+                    "flag": {
+                      "isVerified": true,
+                      "isFollowed": false
+                    },
+                    "level": 8
+                  }
+                ],
+                "slug": "test-poll-1532406966077726531",
+                "sponsored": null,
+                "stats": {
+                  "comments": 2,
+                  "reaction": {
+                    "like": 0
+                  },
+                  "share": 0,
+                  "view": 0
+                },
+                "status": "publish",
+                "title": "Test poll",
+                "tracker": {
+                  "impression": "",
+                  "script": ""
+                },
+                "type": "polling",
+                "user": {
+                  "create": "27431110790457422",
+                  "update": "27431110790457422"
+                },
+                "userFlag": {
+                  "liked": false,
+                  "commented": false,
+                  "mood": false,
+                  "sharedTimeline": false,
+                  "voted": false
+                },
+                "galleries": [
+                  
+                ],
+                "magnetic": false,
+                "tosort": "",
+                "date_sort": ""
+              },
+              "lead_media": {
+                "cloudinary_ids": [
+                  "tqxmiv7bi8jspxlobwb4"
+                ],
+                "type": "image",
+                "urls": [
+                  "https://gimg.kumpar.com/kumpar/image/upload/v1531369369/tqxmiv7bi8jspxlobwb4.jpg"
+                ],
+                "external_url": "",
+                "draftjs_object": ""
+              }
+            },
+            {
+              "_id": "v1_stories/1535353962950458056",
+              "_key": "1535353962950458056",
+              "author": {
+                "group": "",
+                "id": "27431110790791321",
+                "name": "Agung Hariadi Tedja",
+                "username": "agung-hariadi-tedja1530852815756",
+                "profilePicture": "https://res.cloudinary.com/kumpar/image/gplus/w_300,h_300,c_fill,g_face/117259548641516947644.jpg",
+                "_key": "27431110790791321",
+                "flag": {
+                  "isVerified": false,
+                  "isFollowed": false,
+                  "isFollowedPublisher": false
+                },
+                "userFlags": {
+                  "publisher": false,
+                  "test": false
+                },
+                "publisher": null,
+                "level": 0
+              },
+              "datatype": "story",
+              "date": {
+                "create": "2018-08-27T07:12:43Z",
+                "headline": "",
+                "publish": "2018-08-27T07:12:43Z",
+                "update": "2018-08-27T07:31:13Z"
+              },
+              "detail": {
+                "draftjs_object": "{\"entityMap\":{\"0\":{\"type\":\"image\",\"mutability\":\"IMMUTABLE\",\"data\":{\"image\":{\"public_id\":\"0_ytknbi\",\"version\":1535353954,\"signature\":\"ca1908e9d9284bec3c053f16cc2d3e0b736b789c\",\"width\":398,\"height\":398,\"format\":\"jpg\",\"resource_type\":\"image\",\"created_at\":\"2018-08-27T07:12:34Z\",\"tags\":[],\"bytes\":30914,\"type\":\"upload\",\"etag\":\"8d4a509ae4bd46006653aa6f6289d7b1\",\"placeholder\":false,\"url\":\"http://res.cloudinary.com/kumpar/image/upload/v1535353954/0_ytknbi.jpg\",\"secure_url\":\"https://res.cloudinary.com/kumpar/image/upload/v1535353954/0_ytknbi.jpg\",\"original_filename\":\"0\",\"original_extension\":\"jpeg\",\"dimensions\":{\"width\":398,\"height\":398}},\"alignment\":\"justify\",\"isCover\":true}}},\"blocks\":[{\"key\":\"d7sr\",\"text\":\" \",\"type\":\"atomic\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":0,\"length\":1,\"key\":0}],\"data\":{}},{\"key\":\"b0utj\",\"text\":\"Tebak nama saya\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+                "type": "draftjs"
+              },
+              "editor": null,
+              "editors": [
+                
+              ],
+              "internal": false,
+              "is": {
+                "adultContent": false
+              },
+              "labels": {
+                "topics": [
+                  {
+                    "_key": "1530000593040996971",
+                    "_id": "v1_topic/1530000593040996971",
+                    "name": "ini dia para peraih medali emas di asean games dua ribu delapan belas",
+                    "slug": "ini-dia-para-peraih-medali-emas-di-asean-games-dua-ribu-delapan-belas",
+                    "url": "",
+                    "special": false,
+                    "flag": {
+                      "isFollowed": false,
+                      "isViewEnable": false
+                    }
+                  }
+                ]
+              },
+              "lead_media": {
+                "cloudinary_ids": [
+                  "0_ytknbi"
+                ],
+                "type": "",
+                "urls": [
+                  "bebel"
+                ],
+                "external_url": "",
+                "draftjs_object": ""
+              },
+              "lead_text": {
+                "content": " siapakah koji",
+                "type": "raw"
+              },
+              "location": {
+                "lat": -6.17511,
+                "lng": 106.86503949999997,
+                "name": "Jakarta, Indonesia"
+              },
+              "meta": null,
+              "media": [
+                
+              ],
+              "position": {
+                "headline": 0,
+                "sticked": 0
+              },
+              "polling": null,
+              "reporter": null,
+              "reporters": [
+                
+              ],
+              "slug": "doni-shakalaka-1535353962950458056",
+              "sponsored": null,
+              "stats": {
+                "comments": 0,
+                "reaction": {
+                  "like": 0
+                },
+                "share": 0,
+                "view": 0
+              },
+              "status": "publish",
+              "title": "Doni Shakalaka",
+              "tracker": {
+                "impression": "",
+                "script": ""
+              },
+              "type": "text",
+              "user": {
+                "create": "27431110790791321",
+                "update": "27431110790791321"
+              },
+              "userFlag": {
+                "liked": false,
+                "commented": false,
+                "mood": false,
+                "sharedTimeline": false,
+                "voted": false
+              },
+              "galleries": [
+                
+              ],
+              "magnetic": true,
+              "tosort": "",
+              "date_sort": ""
+            }
+          ],
+          "total": 31
+        }
+
+## Profile's Stories [/profile/{username}/stories{?page,limit,date,datetype,status}]
+
+### Profile Stories [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+    + date - string
+    + datetype - string
+    + status - string
+    
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+          "code": 200,
+          "limit": 10,
+          "page": 1,
+          "results": [
+            {
+              "datatype": "share",
+              "date": {
+                "create": "2018-08-27T10:47:47Z",
+                "headline": "",
+                "publish": "2018-08-27T10:47:47Z",
+                "update": "",
+                "schedule": null
+              },
+              "author": {
+                "_id": "v1_users/27431110790791321",
+                "_rev": "_XSIuS02---",
+                "_key": "27431110790791321",
+                "UUID": "",
+                "name": "Agung Hariadi Tedja",
+                "username": "agung-hariadi-tedja1530852815756",
+                "email": "agung.tedja@kumparan.com",
+                "phone": "",
+                "profilePicture": "https://res.cloudinary.com/kumpar/image/gplus/w_300,h_300,c_fill,g_face/117259548641516947644.jpg",
+                "coverPicture": "",
+                "provider": {
+                  "id": "117259548641516947644",
+                  "name": "google"
+                },
+                "interest": [
+                  
+                ],
+                "level": 1,
+                "status": "active",
+                "datatype": "user",
+                "flag": {
+                  "isVerified": false,
+                  "isFollowed": false,
+                  "isFollowedPublisher": false
+                },
+                "aboutme": "",
+                "groups": [
+                  
+                ],
+                "gender": "male",
+                "birthday": "2018-06-26",
+                "location": null,
+                "date": {
+                  "create": "2018-07-06T04:53:35.259Z",
+                  "update": "2018-07-06T04:53:52.828Z",
+                  "publish": ""
+                },
+                "user": {
+                  "create": "",
+                  "deleted": "",
+                  "update": "27431110790791321"
+                },
+                "verification": {
+                  "email": false,
+                  "phone": false
+                },
+                "userFlags": null,
+                "loginby": "google",
+                "isSelf": false,
+                "secemail": "",
+                "Website": "",
+                "role": "",
+                "total": {
+                  "story": 30,
+                  "follower": 0,
+                  "following": 4,
+                  "topic": 3,
+                  "comments": 26
+                },
+                "group": ""
+              },
+              "shareCaption": "test",
+              "isSelf": false,
+              "object": {
+                "_id": "v1_stories/1532406966077726531",
+                "_key": "1532406966077726531",
+                "author": {
+                  "group": "",
+                  "id": "27431110790457422",
+                  "name": "Ferdian Robianto",
+                  "username": "ferdian-robianto",
+                  "profilePicture": "https://alibaba.kumpar.com/kumpar/image/gplus/w_300,h_300,c_fill,g_face/112239263056722264021.jpg",
+                  "_key": "27431110790457422",
+                  "flag": {
+                    "isVerified": false,
+                    "isFollowed": false,
+                    "isFollowedPublisher": false
+                  },
+                  "userFlags": {
+                    "publisher": false,
+                    "test": false
+                  },
+                  "publisher": {
+                    "name": "kumparanBISNIS",
+                    "title": "",
+                    "description": "Informasi dan analisis ekonomi-bisnis, dari korporasi hingga end user",
+                    "picture": "https://gimg.kumpar.com/kumpar/image/upload/v1512588409/rc7bmfkzmlnyaseicna5.png",
+                    "_key": "kumparan-bisnis",
+                    "slug": "kumparanbisnis",
+                    "cover": "https://gimg.kumpar.com/kumpar/image/upload/v1512589032/zluufynrciwortymbuih.jpg",
+                    "avatar": "https://gimg.kumpar.com/kumpar/image/upload/v1512588409/rc7bmfkzmlnyaseicna5.png"
+                  },
+                  "level": 0
+                },
+                "datatype": "story",
+                "date": {
+                  "create": "2018-07-24T06:31:00.681Z",
+                  "headline": "",
+                  "publish": "2018-07-24T06:31:29.221Z",
+                  "update": "2018-07-24T06:31:59.824Z"
+                },
+                "detail": {
+                  "draftjs_object": "{\"entityMap\":{\"0\":{\"type\":\"image\",\"mutability\":\"IMMUTABLE\",\"data\":{\"image\":{\"_key\":\"27431110790489836\",\"bytes\":533669,\"date\":{\"create\":\"2018-07-12T04:28:30.406Z\",\"event\":\"2018-07-11T17:00:00.000Z\"},\"description\":\"Peringatan Hari Anti Narkoba Internasional.\",\"dimensions\":{\"height\":720,\"width\":1280},\"location\":{\"lat\":-6.2293867,\"lng\":106.6894284,\"name\":\"DKI Jakarta\"},\"mimetype\":\"image/jpg\",\"permission\":0,\"photographer\":\"Dok. Kemendagri\",\"public_id\":\"tqxmiv7bi8jspxlobwb4\",\"source\":\"Others\",\"status\":\"publish\",\"tagging\":[],\"title\":\"Hari Anti Narkoba Internasional\",\"topics\":[],\"type\":\"image\",\"updatedContent\":[],\"uploader\":{\"id\":\"1164887353\",\"name\":\"Fitra Andrianto\"},\"url\":\"https://gimg.kumpar.com/kumpar/image/upload/v1531369369/tqxmiv7bi8jspxlobwb4.jpg\",\"user\":{\"create\":\"1164887353\",\"deleted\":null,\"update\":null}},\"alignment\":\"justify\",\"isCover\":true}}},\"blocks\":[{\"key\":\"80ijt\",\"text\":\"Test poll\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"4okeg\",\"text\":\" \",\"type\":\"atomic\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":0,\"length\":1,\"key\":0}],\"data\":{}},{\"key\":\"coifq\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+                  "type": "draftjs"
+                },
+                "editor": {
+                  "id": "v1_users/1420839525",
+                  "name": "adit prasetio",
+                  "username": "adit-prasetio",
+                  "profilePicture": "https://alibaba.kumpar.com/kumpar/image/gplus/w_300,h_300,c_fill,g_face/116827263750544344879.jpg",
+                  "flag": {
+                    "isVerified": false,
+                    "isFollowed": false
+                  },
+                  "level": 0
+                },
+                "editors": [
+                  
+                ],
+                "internal": true,
+                "is": {
+                  "adultContent": false
+                },
+                "labels": {
+                  "topics": [
+                    {
+                      "_key": "1530000583816928988",
+                      "_id": "v1_topic/1530000583816928988",
+                      "name": "Topic Testing Baru",
+                      "slug": "topic-testing-baru",
+                      "url": "",
+                      "special": false,
+                      "flag": {
+                        "isFollowed": false,
+                        "isViewEnable": false
+                      }
+                    }
+                  ]
+                },
+                "lead_media": {
+                  "cloudinary_ids": [
+                    "tqxmiv7bi8jspxlobwb4"
+                  ],
+                  "type": "image",
+                  "urls": [
+                    "https://gimg.kumpar.com/kumpar/image/upload/v1531369369/tqxmiv7bi8jspxlobwb4.jpg"
+                  ],
+                  "external_url": "",
+                  "draftjs_object": ""
+                },
+                "lead_text": {
+                  "content": "Test poll",
+                  "type": "raw"
+                },
+                "location": null,
+                "meta": null,
+                "media": [
+                  
+                ],
+                "position": {
+                  "headline": 0,
+                  "sticked": 0
+                },
+                "polling": {
+                  "choices": {
+                    "1": {
+                      "image": "zlizdp1zqquywpjqozai",
+                      "selected": false,
+                      "stats": 2,
+                      "text": "halo"
+                    },
+                    "2": {
+                      "image": "u5o4pd5ka7tgpphfba1z",
+                      "selected": false,
+                      "stats": 1,
+                      "text": "halo2"
+                    }
+                  },
+                  "date": {
+                    "end": "2018-07-26T06:27:52.548Z",
+                    "start": "2018-07-24T06:27:52.548Z"
+                  },
+                  "question": {
+                    "cover": "zlizdp1zqquywpjqozai",
+                    "text": "Test poll"
+                  },
+                  "settings": {
+                    "hideResult": false,
+                    "isMultiple": false,
+                    "otherManual": false
+                  },
+                  "stats": {
+                    "1": 2,
+                    "2": 1,
+                    "total": 3
+                  }
+                },
+                "reporter": {
+                  "id": "v1_users/27431110790722957",
+                  "name": "Arfiansyah Panji Purnandaru",
+                  "username": "arfiansyah-panji-purnandaru",
+                  "profilePicture": "https://res.cloudinary.com/kumpar/image/upload/v1524237395/1524237393118_s89nwp_jrk1in.jpg",
+                  "flag": {
+                    "isVerified": true,
+                    "isFollowed": false
+                  },
+                  "level": 8
+                },
+                "reporters": [
+                  {
+                    "id": "v1_users/27431110790722957",
+                    "name": "Arfiansyah Panji Purnandaru",
+                    "username": "arfiansyah-panji-purnandaru",
+                    "profilePicture": "https://res.cloudinary.com/kumpar/image/upload/v1524237395/1524237393118_s89nwp_jrk1in.jpg",
+                    "flag": {
+                      "isVerified": true,
+                      "isFollowed": false
+                    },
+                    "level": 8
+                  }
+                ],
+                "slug": "test-poll-1532406966077726531",
+                "sponsored": null,
+                "stats": {
+                  "comments": 2,
+                  "reaction": {
+                    "like": 0
+                  },
+                  "share": 0,
+                  "view": 0
+                },
+                "status": "publish",
+                "title": "Test poll",
+                "tracker": {
+                  "impression": "",
+                  "script": ""
+                },
+                "type": "polling",
+                "user": {
+                  "create": "27431110790457422",
+                  "update": "27431110790457422"
+                },
+                "userFlag": {
+                  "liked": false,
+                  "commented": false,
+                  "mood": false,
+                  "sharedTimeline": false,
+                  "voted": false
+                },
+                "galleries": [
+                  
+                ],
+                "magnetic": false,
+                "tosort": "",
+                "date_sort": ""
+              },
+              "lead_media": {
+                "cloudinary_ids": [
+                  "tqxmiv7bi8jspxlobwb4"
+                ],
+                "type": "image",
+                "urls": [
+                  "https://gimg.kumpar.com/kumpar/image/upload/v1531369369/tqxmiv7bi8jspxlobwb4.jpg"
+                ],
+                "external_url": "",
+                "draftjs_object": ""
+              }
+            },
+            {
+              "_id": "v1_stories/1535353962950458056",
+              "_key": "1535353962950458056",
+              "author": {
+                "group": "",
+                "id": "27431110790791321",
+                "name": "Agung Hariadi Tedja",
+                "username": "agung-hariadi-tedja1530852815756",
+                "profilePicture": "https://res.cloudinary.com/kumpar/image/gplus/w_300,h_300,c_fill,g_face/117259548641516947644.jpg",
+                "_key": "27431110790791321",
+                "flag": {
+                  "isVerified": false,
+                  "isFollowed": false,
+                  "isFollowedPublisher": false
+                },
+                "userFlags": {
+                  "publisher": false,
+                  "test": false
+                },
+                "publisher": null,
+                "level": 0
+              },
+              "datatype": "story",
+              "date": {
+                "create": "2018-08-27T07:12:43Z",
+                "headline": "",
+                "publish": "2018-08-27T07:12:43Z",
+                "update": "2018-08-27T07:31:13Z"
+              },
+              "detail": {
+                "draftjs_object": "{\"entityMap\":{\"0\":{\"type\":\"image\",\"mutability\":\"IMMUTABLE\",\"data\":{\"image\":{\"public_id\":\"0_ytknbi\",\"version\":1535353954,\"signature\":\"ca1908e9d9284bec3c053f16cc2d3e0b736b789c\",\"width\":398,\"height\":398,\"format\":\"jpg\",\"resource_type\":\"image\",\"created_at\":\"2018-08-27T07:12:34Z\",\"tags\":[],\"bytes\":30914,\"type\":\"upload\",\"etag\":\"8d4a509ae4bd46006653aa6f6289d7b1\",\"placeholder\":false,\"url\":\"http://res.cloudinary.com/kumpar/image/upload/v1535353954/0_ytknbi.jpg\",\"secure_url\":\"https://res.cloudinary.com/kumpar/image/upload/v1535353954/0_ytknbi.jpg\",\"original_filename\":\"0\",\"original_extension\":\"jpeg\",\"dimensions\":{\"width\":398,\"height\":398}},\"alignment\":\"justify\",\"isCover\":true}}},\"blocks\":[{\"key\":\"d7sr\",\"text\":\" \",\"type\":\"atomic\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":0,\"length\":1,\"key\":0}],\"data\":{}},{\"key\":\"b0utj\",\"text\":\"Tebak nama saya\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+                "type": "draftjs"
+              },
+              "editor": null,
+              "editors": [
+                
+              ],
+              "internal": false,
+              "is": {
+                "adultContent": false
+              },
+              "labels": {
+                "topics": [
+                  {
+                    "_key": "1530000593040996971",
+                    "_id": "v1_topic/1530000593040996971",
+                    "name": "ini dia para peraih medali emas di asean games dua ribu delapan belas",
+                    "slug": "ini-dia-para-peraih-medali-emas-di-asean-games-dua-ribu-delapan-belas",
+                    "url": "",
+                    "special": false,
+                    "flag": {
+                      "isFollowed": false,
+                      "isViewEnable": false
+                    }
+                  }
+                ]
+              },
+              "lead_media": {
+                "cloudinary_ids": [
+                  "0_ytknbi"
+                ],
+                "type": "",
+                "urls": [
+                  "bebel"
+                ],
+                "external_url": "",
+                "draftjs_object": ""
+              },
+              "lead_text": {
+                "content": " siapakah koji",
+                "type": "raw"
+              },
+              "location": {
+                "lat": -6.17511,
+                "lng": 106.86503949999997,
+                "name": "Jakarta, Indonesia"
+              },
+              "meta": null,
+              "media": [
+                
+              ],
+              "position": {
+                "headline": 0,
+                "sticked": 0
+              },
+              "polling": null,
+              "reporter": null,
+              "reporters": [
+                
+              ],
+              "slug": "doni-shakalaka-1535353962950458056",
+              "sponsored": null,
+              "stats": {
+                "comments": 0,
+                "reaction": {
+                  "like": 0
+                },
+                "share": 0,
+                "view": 0
+              },
+              "status": "publish",
+              "title": "Doni Shakalaka",
+              "tracker": {
+                "impression": "",
+                "script": ""
+              },
+              "type": "text",
+              "user": {
+                "create": "27431110790791321",
+                "update": "27431110790791321"
+              },
+              "userFlag": {
+                "liked": false,
+                "commented": false,
+                "mood": false,
+                "sharedTimeline": false,
+                "voted": false
+              },
+              "galleries": [
+                
+              ],
+              "magnetic": true,
+              "tosort": "",
+              "date_sort": ""
+            }
+          ],
+          "total": 31
+        }
+        
+## Profile's Responses [/profile/{username}/responses{?page,limit,date,datetype,status}]
+
+### Profile Responses [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+    + date - string
+    + datetype - string
+    + status - string
+    
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+          "code": 200,
+          "limit": 10,
+          "page": 1,
+          "results": [
+            {
+              "_id": "v1_responses/1533186753528121990",
+              "_rev": "_XWiXz2q--_",
+              "_key": "1533186753528121990",
+              "author": {
+                "group": "",
+                "id": "27431110790791321",
+                "name": "Agung Hariadi Tedja",
+                "username": "agung-hariadi-tedja1530852815756",
+                "profilePicture": "https://res.cloudinary.com/kumpar/image/gplus/w_300,h_300,c_fill,g_face/117259548641516947644.jpg",
+                "_key": "27431110790791321",
+                "flag": {
+                  "isVerified": false,
+                  "isFollowed": false,
+                  "isFollowedPublisher": false
+                },
+                "userFlag": null,
+                "publisher": null,
+                "level": 1
+              },
+              "content": "bbek bercelana",
+              "datatype": "response",
+              "date": {
+                "create": "2018-08-02T05:12:33Z",
+                "publish": "2018-08-02T05:12:33Z",
+                "update": ""
+              },
+              "flag": null,
+              "labels": null,
+              "media": [
+                {
+                  "type": "url",
+                  "cloudinary": null,
+                  "giphy": null,
+                  "iframely": {
+                    "id": "hg16e6N",
+                    "url": "https://wdev5.kumparan.com/panturapost/penginapan-wisata-kebun-teh-kaligua-brebes-penuh-hingga-akhir-juni",
+                    "meta": {
+                      "canonical": "https://kumparan.com/panturapost/penginapan-wisata-kebun-teh-kaligua-brebes-penuh-hingga-akhir-juni",
+                      "description": "Wisatawan Kebun Teh Kaligua, Brebes, saat libur Lebaran. (Foto: Marjono)",
+                      "title": "Penginapan Wisata Kebun Teh Kaligua Brebes Penuh hingga Akhir Juni"
+                    },
+                    "links": {
+                      "icon": [
+                        {
+                          "type": "image/icon",
+                          "rel": [
+                            "shortcut",
+                            "icon",
+                            "ssl"
+                          ],
+                          "href": "https://wdev5.kumparan.com/favicon.ico"
+                        }
+                      ]
+                    },
+                    "rel": [
+                      "summary",
+                      "ssl",
+                      "html5",
+                      "inline"
+                    ],
+                    "html": "<div><div style=\"left: 0; width: 100%; height: 0; position: relative; padding-bottom: 52.5%;\"><iframe src=\"//cdn.iframe.ly/hg16e6N?app=1\" style=\"border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;\" allowfullscreen></iframe></div></div>"
+                  }
+                }
+              ],
+              "position": {
+                "headline": 0,
+                "sticked": 0
+              },
+              "reply": [
+                {
+                  "_id": "v1_responses/1533709954367030754",
+                  "_rev": "_XX2aaLy---",
+                  "_key": "1533709954367030754",
+                  "author": {
+                    "group": "",
+                    "id": "27431110790525325",
+                    "name": "Andhika Ventausa",
+                    "username": "andhika-ventausa1519022355004",
+                    "profilePicture": "https://alibaba.kumpar.com/kumpar/image/upload/w_300,h_300,c_scale,c_thumb/dythiv9n9lfgwdgxubfi.jpg",
+                    "_key": "27431110790525325",
+                    "flag": {
+                      "isVerified": false,
+                      "isFollowed": false,
+                      "isFollowedPublisher": false
+                    },
+                    "userFlag": null,
+                    "publisher": null,
+                    "level": 1
+                  },
+                  "content": "Rizki Romadhoni test ya",
+                  "datatype": "response",
+                  "date": {
+                    "create": "2018-09-03T06:26:28.700Z",
+                    "publish": "2018-09-03T06:26:28.701Z",
+                    "update": ""
+                  },
+                  "flag": null,
+                  "labels": null,
+                  "media": [
+                    
+                  ],
+                  "position": {
+                    "headline": 0,
+                    "sticked": 0
+                  },
+                  "reply": [
+                    
+                  ],
+                  "replyto": {
+                    "id": "1533186753528121990",
+                    "author": {
+                      "group": "",
+                      "id": "27431110790791321",
+                      "name": "Agung Hariadi Tedja",
+                      "username": "agung-hariadi-tedja1530852815756",
+                      "profilePicture": "https://res.cloudinary.com/kumpar/image/gplus/w_300,h_300,c_fill,g_face/117259548641516947644.jpg",
+                      "_key": "27431110790791321",
+                      "flag": {
+                        "isVerified": false,
+                        "isFollowed": false,
+                        "isFollowedPublisher": false
+                      },
+                      "userFlag": null,
+                      "publisher": null,
+                      "level": 1
+                    }
+                  },
+                  "slug": "comment-for-story-27431110790531426",
+                  "stats": {
+                    "comments": 0,
+                    "reaction": {
+                      "like": 0
+                    },
+                    "share": 0,
+                    "view": 0
+                  },
+                  "status": "publish",
+                  "storyid": "27431110790531426",
+                  "title": "Comment for story #27431110790531426",
+                  "type": "text",
+                  "user": {
+                    "create": "27431110790525325",
+                    "update": ""
+                  },
+                  "userFlag": {
+                    "isLikedResponse": false,
+                    "isCommentedResponse": false,
+                    "liked": false,
+                    "commented": false
+                  },
+                  "story": null,
+                  "mentions": [
+                    
+                  ],
+                  "location": null,
+                  "links": null,
+                  "parentid": "1533186753528121990"
+                }
+              ],
+              "replyto": null,
+              "slug": "comment-for-story-27431110790531426",
+              "stats": {
+                "comments": 1,
+                "reaction": {
+                  "like": 0
+                },
+                "share": 0,
+                "view": 0
+              },
+              "status": "publish",
+              "storyid": "27431110790531426",
+              "title": "Comment for story #27431110790531426",
+              "type": "text",
+              "user": {
+                "create": "27431110790791321",
+                "update": ""
+              },
+              "userFlag": {
+                "isLikedResponse": false,
+                "isCommentedResponse": false,
+                "liked": false,
+                "commented": false
+              },
+              "story": {
+                "_id": "v1_stories/27431110790531426",
+                "_key": "27431110790531426",
+                "_rev": "_XX4wjuG---",
+                "author": {
+                  "group": "",
+                  "id": "27431110790455092",
+                  "name": "PanturaPost",
+                  "username": "panturapost",
+                  "profilePicture": "https://alibaba.kumpar.com/kumpar/image/upload/w_300,h_300,c_scale,c_thumb/e5fbvfi70ttgqjidpes6.jpg",
+                  "_key": "",
+                  "flag": {
+                    "isVerified": true,
+                    "isFollowed": false,
+                    "isFollowedPublisher": false
+                  },
+                  "userFlag": null,
+                  "publisher": null,
+                  "level": 0
+                },
+                "datatype": "story",
+                "date": {
+                  "create": "2018-06-24T10:31:02.951Z",
+                  "headline": "",
+                  "publish": "2018-06-24T10:31:02.951Z",
+                  "update": "",
+                  "schedule": null
+                },
+                "detail": {
+                  "draftjs_object": "{\"entityMap\":{\"0\":{\"type\":\"image\",\"mutability\":\"IMMUTABLE\",\"data\":{\"image\":{\"public_id\":\"1529835910071_lfdkl_f0k2s5\",\"version\":1529835921,\"signature\":\"86bfadf3dacf20e53883fb82bdd9b43560656a73\",\"width\":700,\"height\":393,\"format\":\"jpg\",\"resource_type\":\"image\",\"created_at\":\"2018-06-24T10:25:21Z\",\"tags\":[],\"bytes\":25461,\"type\":\"upload\",\"etag\":\"f4e0f94b860870c949d6112bffaa22ff\",\"placeholder\":false,\"url\":\"http://res.cloudinary.com/kumpar/image/upload/v1529835921/1529835910071_lfdkl_f0k2s5.jpg\",\"secure_url\":\"https://res.cloudinary.com/kumpar/image/upload/v1529835921/1529835910071_lfdkl_f0k2s5.jpg\",\"original_filename\":\"1529835910071_lfdkl\"},\"alignment\":\"justify\"}}},\"blocks\":[{\"key\":\"6pvb1\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"11ucp\",\"text\":\" \",\"type\":\"atomic\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":0,\"length\":1,\"key\":0}],\"data\":{}},{\"key\":\"chdbj\",\"text\":\"Wisatawan Kebun Teh Kaligua, Brebes, saat libur Lebaran. (Foto: Marjono)\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":72,\"style\":\"ITALIC\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"er9ch\",\"text\":\"BREBES - Meski libur lebaran telah usai, namun obyek wisata kebun teh Kaligua masih terus ramai hingga akhir bulan ini. Sebab, penginapan di dalamnya sudah penuh hingga bulan Juni berakhir. Selain itu, hingga kini masih banyak pengunjung yang berdatangan silih berganti.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"50csa\",\"text\":\"Pengelola Kebun Teh Kaligua, Marjono mengungkapkan, hingga H+7 kemarin, diketahui pengunjung sudah mencapai 30.848 orang. \\\"Itujumlahpengunjungyangsekadardatangdanpulang,
+                  belumtermasukyangmenginap,
+                  \\\" ungkapnya saat dihubungi melalui telepon selulernya, Minggu 24 Juni 2018\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"9ss92\",\"text\":\"Menurutnya, selama libur lebaran obyek wisata yang berada di Kecamatan Paguyangan, Brebes itu selalu ramai wisatawan. \\\"Hinggahariini,
+                  Alhamdulillahlancar,
+                  ramaidanpadaH+2sempatadakemacetandijalanmenujukebunteh,
+                  \\\" jelas Marjono.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"ds8vl\",\"text\":\"Mereka yang datang ke Kaligua tak hanya menikmati sejuknya udara dan hamparan kebun teh yang indah, namun masih banyak wahana yang disuguhkan oleh pengelola. Di antaranya sepeda air, sumber air tuk bening, goa Jepang. Pengunjung juga bisa berpakaian ala pemetik teh. Disewakan juga kostum kimono untuk berfoto di lokal kebun teh.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"3m44q\",\"text\":\"Marjono mengaku, setiap tahun objek wisata yang dikelola oleh PTPN IX itu mengalami peningkatan jumlah pengunjung. \\\"Kalaukitahitungdalamtutupbulanbukuberjalan,
+                  setiaptahuntrend-nyanaik,
+                  \\\" katanya.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"a3gi3\",\"text\":\"Berdasarkan informasi yang dihimpun dari pengelola, di wisata kebun teh Kaligua akan ada event panggung di lapangan obyek wisata pada 8 Juli 2018 mendatang. Acara ini akan dimeriahkan dengan kehadiran bintang tamu dari artis Bintang Pantura Indosiar yakni Susi Ngapak.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"5t3no\",\"text\":\"Suasana libur lebaran, ternyata tidak membuat pengelola menaikkan harga tiket masuk. \\\"Tidakadakenaikantiketmasuk,
+                  masihtetapsamaRp17.000perorang.Tapibagipengunjungyangmaumenikmatiwahanadiarealperkebunantetapbayarlagi,
+                  \\\" pungkas Marjono.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"4dtof\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"99hlb\",\"text\":\"Reporter: Yunar Rahmawan\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"dl04p\",\"text\":\"Editor: Muhammad Irsyam Faiz\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+                  "type": "draftjs",
+                  "web_url": "",
+                  "content": ""
+                },
+                "editor": null,
+                "editors": [
+                  
+                ],
+                "internal": false,
+                "is": {
+                  "adultContent": false
+                },
+                "labels": {
+                  "topics": [
+                    {
+                      "_key": "22553543",
+                      "author": null,
+                      "date": null,
+                      "description": "",
+                      "flag": null,
+                      "name": "News",
+                      "slug": "",
+                      "status": "",
+                      "type": "",
+                      "url": "",
+                      "user": null,
+                      "statistic": null,
+                      "position": false,
+                      "_id": "v1_topic/22553543",
+                      "_rev": ""
+                    },
+                    {
+                      "_key": "39329624",
+                      "author": null,
+                      "date": null,
+                      "description": "",
+                      "flag": null,
+                      "name": "Liburan",
+                      "slug": "",
+                      "status": "",
+                      "type": "",
+                      "url": "",
+                      "user": null,
+                      "statistic": null,
+                      "position": false,
+                      "_id": "v1_topic/39329624",
+                      "_rev": ""
+                    },
+                    {
+                      "_key": "27431110790313513",
+                      "author": null,
+                      "date": null,
+                      "description": "",
+                      "flag": null,
+                      "name": "Lebaran 2018",
+                      "slug": "",
+                      "status": "",
+                      "type": "",
+                      "url": "",
+                      "user": null,
+                      "statistic": null,
+                      "position": false,
+                      "_id": "v1_topic/27431110790313513",
+                      "_rev": ""
+                    },
+                    {
+                      "_key": "1046423080",
+                      "author": null,
+                      "date": null,
+                      "description": "",
+                      "flag": null,
+                      "name": "Brebes",
+                      "slug": "",
+                      "status": "",
+                      "type": "",
+                      "url": "",
+                      "user": null,
+                      "statistic": null,
+                      "position": false,
+                      "_id": "v1_topic/1046423080",
+                      "_rev": ""
+                    }
+                  ]
+                },
+                "lead_media": {
+                  "cloudinary_ids": [
+                    "1529835910071_lfdkl_f0k2s5"
+                  ],
+                  "type": "image",
+                  "urls": [
+                    "https://res.cloudinary.com/kumpar/image/upload/v1529835921/1529835910071_lfdkl_f0k2s5.jpg"
+                  ],
+                  "external_url": "",
+                  "draftjs_object": ""
+                },
+                "lead_text": {
+                  "content": " ",
+                  "type": "raw",
+                  "draftjs_object": ""
+                },
+                "location": null,
+                "position": {
+                  "headline": 0,
+                  "sticked": 0
+                },
+                "reporter": null,
+                "slug": "penginapan-wisata-kebun-teh-kaligua-brebes-penuh-hingga-akhir-juni",
+                "sponsored": null,
+                "stats": {
+                  "comments": 8,
+                  "share": 0,
+                  "view": 0,
+                  "reaction": {
+                    "like": 3
+                  }
+                },
+                "status": "publish",
+                "title": "Penginapan Wisata Kebun Teh Kaligua Brebes Penuh hingga Akhir Juni",
+                "tracker": null,
+                "type": "text",
+                "user": {
+                  "create": "27431110790455092",
+                  "update": ""
+                },
+                "userFlag": {
+                  "liked": false,
+                  "commented": false,
+                  "mood": false,
+                  "sharedTimeline": false,
+                  "voted": false
+                },
+                "reporters": [
+                  
+                ],
+                "polling": null,
+                "id_sql": "",
+                "source": "",
+                "meta": null,
+                "galleries": [
+                  
+                ],
+                "magnetic": false,
+                "tosort": "",
+                "date_sort": ""
+              },
+              "mentions": [
+                
+              ],
+              "location": null,
+              "links": null,
+              "parentid": ""
+            }
+          ],
+          "total": 26
         }
