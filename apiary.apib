@@ -104,7 +104,7 @@ Any complex data type MUST be encoded in JSON.
                 }
             }
 
-## Topic Object [/aggregators/{slug}]
+## Aggregator Object [/aggregators/{slug}]
 ### Patch [PATCH]
 
 + Request (application/json)
@@ -136,6 +136,87 @@ Any complex data type MUST be encoded in JSON.
                     "delete": "27431110790355723",
                     "update": ""
                 }
+            }
+            
+            
+### Delete [DELETE]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+            {
+                "_key": "1464160495",
+                "date": {
+                    "create": "2018-07-19T07:03:22.520Z",
+                    "delete": "2018-07-19T07:03:22.520Z",
+                    "update": "2018-07-19T07:03:22.520Z"
+                },
+                "name": "caping2",
+                "slug": "caping",
+                "status": "",
+                "user": {
+                    "create": "27431110790355723",
+                    "delete": "27431110790355723",
+                    "update": "27431110790355723"
+                }
+            }
+            
+## Aggregator User Object [/aggregators/{slug}/user]
+### Aggregator GET User [GET]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+            {
+                "page": 1,
+                "limit": 10,
+                "total": 1,
+                "result": [
+                    {
+                            "_id": "v1_users/53631452",
+                            "_rev": "_XJYzygG---",
+                            "_key": "53631452",
+                            "UUID": "",
+                            "name": "Itulah%$",
+                            "username": "Itulah",
+                            "email": "aditya.prasetio@kumparan.com",
+                            "phone": "",
+                            "profilePicture": "https://alibaba.kumpar.com/kumpar/image/upload/w_300,h_300,c_scale,c_thumb/lv84argydmiey4bbeegs.jpg",
+                            "coverPicture": "https://alibaba.kumpar.com/kumpar/image/upload/v1504172966/1504172964143_qqd3n4_mswo4x.jpg",
+                            "provider": {
+                                "id": "118009931932377048968",
+                                "name": "google"
+                            },
+                            "interest": [],
+                            "level": 1,
+                            "status": "active",
+                            "datatype": "user",
+                            "flag": {
+                                "isVerified": false,
+                                "isFollowed": false,
+                                "isFollowedPublisher": false
+                            },
+                            "aboutme": "Jfjfhdhdhfhdh",
+                            "groups": [],
+                            "gender": "male",
+                            "birthday": "1996-01-01",
+                            "location": null,
+                            "date": {
+                                "create": "2016-12-27T01:47:32.009Z",
+                                "update": "2018-07-20T08:02:06.497Z",
+                                "publish": ""
+                            }
+                        ]
             }
                     
                     
