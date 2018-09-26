@@ -4292,6 +4292,49 @@ Any complex data type MUST be encoded in JSON.
           ],
           "total": 92
         }
+
+### Recommend Story [POST]
+
++ Request (application/json)
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
+    + Body 
+    
+            {
+                "objectID": "27431110790530893",
+                "type": "story",
+                "description": "Semoga siang Anda menyenangkan.",
+                "title": "Selamat siang pembaca kumparan.",
+                "isPushed": true,
+                "schedule": ""
+            }
+
++ Response 200 (application/json)
+
+        {
+            "_key": "1537948619022433413",
+            "description": "Semoga siang Anda menyenangkan.",
+            "objectID": "27431110790530893",
+            "date": {
+                "create": "2018-09-26T07:56:59Z",
+                "modified": "",
+                "schedule": ""
+            },
+            "title": "Selamat siang pembaca kumparan.",
+            "type": "story",
+            "user": {
+                "create": "27431110790791321",
+                "modified": "",
+                "schedule": ""
+            },
+            "flag": {
+                "pushed": true
+            },
+            "onesignal": null
+        }
         
 ## Recommendation Stories [/recommendation/stories/{?page,limit}]
 
