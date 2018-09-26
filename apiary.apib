@@ -321,7 +321,7 @@ Any complex data type MUST be encoded in JSON.
         
 # Group Reaction
 
-## Reaction Collection [/reaction{?objectid,type,page,limit}]
+## Reaction Collection [/reactions{?objectid,type,page,limit}]
 
 ### List [GET]
 
@@ -449,15 +449,15 @@ Any complex data type MUST be encoded in JSON.
             "userid": "27431110790355723",
             "date": {
                 "create": "2018-06-19T00:46:03.043Z",
-                "update": null,
-                "deleted": null
+                "update": "",
+                "deleted": ""
             },
             "datatype": "reaction",
             "action": "unlike"
         }
 
     
-## Reaction Users Collection [/reaction/users{?page,limit,objectid,type}]
+## Reaction Users Collection [/reactions/users{?page,limit,objectid,type}]
 
 ### List [GET]
 
@@ -489,15 +489,15 @@ Any complex data type MUST be encoded in JSON.
                     "userid": "27431110790355723",
                     "date": {
                         "create": "2018-06-18T14:17:49.435Z",
-                        "update": null,
-                        "deleted": null
+                        "update": "",
+                        "deleted": ""
                     },
                     "datatype": "reaction"
                 }
             ]
         }
 
-## Reaction Liked Collection [/reaction/{key}{?page,limit,date,datetype}]
+## Reaction Liked Collection [/reactions/{key}{?page,limit,date,datetype}]
 
 ### List [GET]
 
@@ -4101,6 +4101,198 @@ Any complex data type MUST be encoded in JSON.
             "message": "Publish Story Succeeded"
         }
         
+## Recommendations [/recommendation/{?page,limit}]
+
+### List [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+          "code": 200,
+          "limit": 1,
+          "page": 1,
+          "results": [
+            {
+              "_id": "v1_recommendations/17205657987639315",
+              "_rev": "_XUpmgAi---",
+              "_key": "17205657987639315",
+              "description": "aura kasih",
+              "objectID": "1532428624231110570",
+              "date": {
+                "create": "2018-08-24T07:49:08.776Z",
+                "modified": "",
+                "schedule": ""
+              },
+              "title": "Siapakah SPG yang paling cantik menurut kamu?",
+              "type": "story",
+              "user": {
+                "create": "27431110790525325",
+                "modified": "",
+                "schedule": ""
+              },
+              "flag": {
+                "pushed": true
+              },
+              "onesignal": null,
+              "story": {
+                "_id": "v1_stories/1532428624231110570",
+                "_key": "1532428624231110570",
+                "_rev": "_XeoRMLe--_",
+                "author": {
+                  "group": "kumparan-hits",
+                  "id": "1044366589",
+                  "name": "Ganesha Dwi Adhy Nugraha",
+                  "username": "ganesha-dwi-adhy-nugraha",
+                  "profilePicture": "",
+                  "_key": "",
+                  "flag": null,
+                  "userFlag": null,
+                  "publisher": null,
+                  "level": 0
+                },
+                "datatype": "story",
+                "date": {
+                  "create": "2018-08-20T07:56:37.242Z",
+                  "headline": "",
+                  "publish": "2018-08-20T07:56:37.244Z",
+                  "update": "",
+                  "schedule": null
+                },
+                "detail": {
+                  "draftjs_object": "{\"entityMap\":{\"0\":{\"type\":\"image\",\"mutability\":\"IMMUTABLE\",\"data\":{\"image\":{\"_key\":\"27431110790428218\",\"bytes\":115839,\"date\":{\"create\":\"2018-04-20T10:33:20.697Z\",\"event\":\"2018-04-19T17:00:00.000Z\"},\"description\":\"SPG Cantik di IIMS 2018.\",\"dimensions\":{\"height\":720,\"width\":1280},\"location\":{\"lat\":-6.2293867,\"lng\":106.6894284,\"name\":\"DKI Jakarta\"},\"mimetype\":\"image/jpg\",\"permission\":0,\"photographer\":\"Helmi Afandi/kumparan\",\"public_id\":\"db7cshvskgt4q11ipd7l\",\"source\":\"kumparan\",\"status\":\"publish\",\"tagging\":[],\"title\":\"SPG Cantik di IIMS 2018.\",\"topics\":[],\"type\":\"image\",\"updatedContent\":[],\"uploader\":{\"id\":\"1164887353\",\"name\":\"Fitra Andrianto\"},\"url\":\"https://gimg.kumpar.com/kumpar/image/upload/v1524220051/db7cshvskgt4q11ipd7l.jpg\",\"user\":{\"create\":\"1164887353\",\"deleted\":null,\"update\":null}},\"alignment\":\"justify\",\"isCover\":true}}},\"blocks\":[{\"key\":\"a2a6d\",\"text\":\"ayo polling\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"5psnu\",\"text\":\" \",\"type\":\"atomic\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":0,\"length\":1,\"key\":0}],\"data\":{}},{\"key\":\"3h8p3\",\"text\":\"hayo ngapain?\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+                  "type": "draftjs",
+                  "web_url": "",
+                  "content": ""
+                },
+                "editor": null,
+                "editors": [
+                  
+                ],
+                "internal": true,
+                "is": {
+                  "adultContent": false
+                },
+                "labels": {
+                  "topics": [
+                    "23182503",
+                    "1530000593040996965"
+                  ]
+                },
+                "lead_media": {
+                  "cloudinary_ids": [
+                    "db7cshvskgt4q11ipd7l"
+                  ],
+                  "type": "image",
+                  "urls": [
+                    "https://gimg.kumpar.com/kumpar/image/upload/v1524220051/db7cshvskgt4q11ipd7l.jpg"
+                  ],
+                  "external_url": "",
+                  "draftjs_object": ""
+                },
+                "lead_text": {
+                  "content": "Pollingnya ga abis abis sampe kiamat",
+                  "type": "raw",
+                  "draftjs_object": ""
+                },
+                "location": null,
+                "position": {
+                  "headline": 0,
+                  "sticked": 0
+                },
+                "reporter": {
+                  "id": "27431110790337438",
+                  "name": "Garin Gustavian Irawan",
+                  "username": "garin-gustavian-irawan",
+                  "profilePicture": "",
+                  "flag": null,
+                  "level": 0
+                },
+                "slug": "siapakah-spg-yang-paling-cantik-menurut-kamu-1532428624231110570",
+                "sponsored": null,
+                "stats": {
+                  "comments": 1,
+                  "share": 0,
+                  "view": 0,
+                  "reaction": {
+                    "like": 3
+                  }
+                },
+                "status": "publish",
+                "title": "Siapakah SPG yang paling cantik menurut kamu?",
+                "tracker": null,
+                "type": "polling",
+                "user": {
+                  "create": "1044366589",
+                  "update": ""
+                },
+                "userFlag": null,
+                "reporters": [
+                  "27431110790337438"
+                ],
+                "author_id": "",
+                "group": "",
+                "readertaskid": "",
+                "source": "",
+                "magnetic": false,
+                "section": [
+                  
+                ],
+                "polling": {
+                  "question": {
+                    "text": "Siapakah SPG yang paling cantik menurut kamu?",
+                    "cover": "db7cshvskgt4q11ipd7l"
+                  },
+                  "choices": {
+                    "text": "",
+                    "image": "",
+                    "stats": 0,
+                    "selected": false
+                  },
+                  "stats": {
+                    "total": 2
+                  },
+                  "settings": {
+                    "button": null,
+                    "isMultiple": false,
+                    "otherManual": false,
+                    "hideResult": false
+                  },
+                  "date": {
+                    "start": "2018-08-20T07:50:38.907Z",
+                    "end": "2429-12-31T07:50:38.907Z"
+                  }
+                },
+                "meta": {
+                  "description": "",
+                  "keywords": ""
+                },
+                "id_sql": "",
+                "galleries": [
+                  
+                ],
+                "media": [
+                  
+                ],
+                "headline": null,
+                "tosort": "",
+                "date_sort": ""
+              },
+              "status": "unread"
+            }
+          ],
+          "total": 92
+        }
+
 # Group Timeline
 
 ## Timeline Collection [/timeline{?limit,page,type,position,location,mediaid}]
