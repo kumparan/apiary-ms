@@ -4292,6 +4292,238 @@ Any complex data type MUST be encoded in JSON.
           ],
           "total": 92
         }
+        
+## Recommendation Stories [/recommendation/stories/{?page,limit}]
+
+### List [GET]
+
++ Parameter
+    + page - integer
+    + limit - integer
+
++ Request
+
+    + Header
+        
+            Authorization: Bearer ABC123
+
++ Response 200 (application/json)
+
+        {
+          "code": 200,
+          "limit": 1,
+          "page": 1,
+          "results": [
+            {
+              "_id": "v1_stories/1532428624231110570",
+              "_key": "1532428624231110570",
+              "author": {
+                "group": "",
+                "id": "1044366589",
+                "name": "Ganesha Dwi Adhy Nugraha",
+                "username": "ganesha-dwi-adhy-nugraha",
+                "profilePicture": "https://alibaba.kumpar.com/kumpar/image/gplus/w_300,h_300,c_fill,g_face/105550421166083727114.jpg",
+                "_key": "1044366589",
+                "flag": {
+                  "isVerified": true,
+                  "isFollowed": false,
+                  "isFollowedPublisher": false
+                },
+                "userFlags": {
+                  "publisher": false,
+                  "test": false
+                },
+                "publisher": {
+                  "name": "kumparanHITS",
+                  "title": "",
+                  "description": "Informasi hiburan, dari gosip hingga mengupas selebriti dalam negeri dan dunia",
+                  "picture": "https://gimg.kumpar.com/kumpar/image/upload/v1512588408/udfl9qccbcogava5bu4x.png",
+                  "_key": "kumparan-hits",
+                  "slug": "kumparanhits",
+                  "cover": "https://gimg.kumpar.com/kumpar/image/upload/v1512589032/k5ltse1m2jdwzby9gvof.jpg",
+                  "avatar": "https://gimg.kumpar.com/kumpar/image/upload/v1512588408/udfl9qccbcogava5bu4x.png"
+                },
+                "level": 0
+              },
+              "datatype": "story",
+              "date": {
+                "create": "2018-08-20T07:56:37.242Z",
+                "headline": "",
+                "publish": "2018-08-20T07:56:37.244Z",
+                "update": ""
+              },
+              "detail": {
+                "draftjs_object": "{\"entityMap\":{\"0\":{\"type\":\"image\",\"mutability\":\"IMMUTABLE\",\"data\":{\"image\":{\"_key\":\"27431110790428218\",\"bytes\":115839,\"date\":{\"create\":\"2018-04-20T10:33:20.697Z\",\"event\":\"2018-04-19T17:00:00.000Z\"},\"description\":\"SPG Cantik di IIMS 2018.\",\"dimensions\":{\"height\":720,\"width\":1280},\"location\":{\"lat\":-6.2293867,\"lng\":106.6894284,\"name\":\"DKI Jakarta\"},\"mimetype\":\"image/jpg\",\"permission\":0,\"photographer\":\"Helmi Afandi/kumparan\",\"public_id\":\"db7cshvskgt4q11ipd7l\",\"source\":\"kumparan\",\"status\":\"publish\",\"tagging\":[],\"title\":\"SPG Cantik di IIMS 2018.\",\"topics\":[],\"type\":\"image\",\"updatedContent\":[],\"uploader\":{\"id\":\"1164887353\",\"name\":\"Fitra Andrianto\"},\"url\":\"https://gimg.kumpar.com/kumpar/image/upload/v1524220051/db7cshvskgt4q11ipd7l.jpg\",\"user\":{\"create\":\"1164887353\",\"deleted\":null,\"update\":null}},\"alignment\":\"justify\",\"isCover\":true}}},\"blocks\":[{\"key\":\"a2a6d\",\"text\":\"ayo polling\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"5psnu\",\"text\":\" \",\"type\":\"atomic\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":0,\"length\":1,\"key\":0}],\"data\":{}},{\"key\":\"3h8p3\",\"text\":\"hayo ngapain?\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+                "type": "draftjs"
+              },
+              "editor": null,
+              "editors": [
+                
+              ],
+              "internal": true,
+              "is": {
+                "adultContent": false
+              },
+              "labels": {
+                "topics": [
+                  {
+                    "_key": "23182503",
+                    "_id": "v1_topic/23182503",
+                    "name": "Mobil",
+                    "slug": "mobil",
+                    "url": "",
+                    "special": false,
+                    "flag": {
+                      "isFollowed": false,
+                      "isViewEnable": false
+                    }
+                  },
+                  {
+                    "_key": "1530000593040996965",
+                    "_id": "v1_topic/1530000593040996965",
+                    "name": "sosmed",
+                    "slug": "sosmed",
+                    "url": "",
+                    "special": false,
+                    "flag": {
+                      "isFollowed": false,
+                      "isViewEnable": false
+                    }
+                  }
+                ]
+              },
+              "lead_media": {
+                "cloudinary_ids": [
+                  "db7cshvskgt4q11ipd7l"
+                ],
+                "type": "image",
+                "urls": [
+                  "https://gimg.kumpar.com/kumpar/image/upload/v1524220051/db7cshvskgt4q11ipd7l.jpg"
+                ],
+                "external_url": "",
+                "draftjs_object": ""
+              },
+              "lead_text": {
+                "content": "Pollingnya ga abis abis sampe kiamat",
+                "type": "raw"
+              },
+              "location": null,
+              "meta": {
+                "description": "",
+                "keywords": ""
+              },
+              "media": [
+                
+              ],
+              "position": {
+                "headline": 0,
+                "sticked": 0
+              },
+              "polling": {
+                "choices": {
+                  "1": {
+                    "image": "xw8hsfrtivbbrrc9o9ed",
+                    "selected": false,
+                    "stats": 1,
+                    "text": "Sari"
+                  },
+                  "2": {
+                    "image": "onmkjidq8llfz4stk8ty",
+                    "selected": false,
+                    "stats": 0,
+                    "text": "Inem"
+                  },
+                  "3": {
+                    "image": "gjdjinipshmzxespnnqr",
+                    "selected": false,
+                    "stats": 0,
+                    "text": "munaroh"
+                  },
+                  "4": {
+                    "image": "igdbsmgm2jemcbnyjan3",
+                    "selected": false,
+                    "stats": 1,
+                    "text": "ati"
+                  }
+                },
+                "date": {
+                  "end": "2429-12-31T07:50:38.907Z",
+                  "start": "2018-08-20T07:50:38.907Z"
+                },
+                "question": {
+                  "cover": "db7cshvskgt4q11ipd7l",
+                  "text": "Siapakah SPG yang paling cantik menurut kamu?"
+                },
+                "settings": {
+                  "hideResult": false,
+                  "isMultiple": false,
+                  "otherManual": false
+                },
+                "stats": {
+                  "1": 1,
+                  "4": 1,
+                  "total": 2
+                }
+              },
+              "reporter": {
+                "id": "27431110790337438",
+                "name": "Garin Gustavian Irawan",
+                "username": "garin-gustavian-irawan",
+                "profilePicture": "https://alibaba.kumpar.com/kumpar/image/upload/w_300,h_300,c_scale,c_thumb/rydk8aqpsawwel1i9dec.jpg",
+                "flag": {
+                  "isVerified": false,
+                  "isFollowed": false
+                },
+                "level": 8
+              },
+              "reporters": [
+                {
+                  "id": "27431110790337438",
+                  "name": "Garin Gustavian Irawan",
+                  "username": "garin-gustavian-irawan",
+                  "profilePicture": "https://alibaba.kumpar.com/kumpar/image/upload/w_300,h_300,c_scale,c_thumb/rydk8aqpsawwel1i9dec.jpg",
+                  "flag": {
+                    "isVerified": false,
+                    "isFollowed": false
+                  },
+                  "level": 8
+                }
+              ],
+              "slug": "siapakah-spg-yang-paling-cantik-menurut-kamu-1532428624231110570",
+              "sponsored": null,
+              "stats": {
+                "comments": 1,
+                "reaction": {
+                  "like": 3
+                },
+                "share": 0,
+                "view": 0
+              },
+              "status": "publish",
+              "title": "Siapakah SPG yang paling cantik menurut kamu?",
+              "tracker": null,
+              "type": "polling",
+              "user": {
+                "create": "1044366589",
+                "update": ""
+              },
+              "userFlag": {
+                "liked": false,
+                "commented": false,
+                "mood": false,
+                "sharedTimeline": false,
+                "voted": false
+              },
+              "galleries": [
+                
+              ],
+              "magnetic": false,
+              "tosort": "",
+              "date_sort": ""
+            }
+          ],
+          "total": 1
+        }
 
 # Group Timeline
 
